@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Groupe La Passerelle - Recrutement</title>
+    <link rel="shortcut icon" href="logo1.jpg"/>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="icon.ico">
+    <style>
+        .recrutement-hero {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, rgba(124, 58, 237, 0.1) 100%);
+        }
+        
+        .jobs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+        
+        .job-card {
+            background: rgba(15, 15, 15, 0.95);
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .job-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.05), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .job-card:hover::before {
+            left: 100%;
+        }
+        
+        .job-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary-color);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+        }
+        
+        .job-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+            transition: var(--transition);
+        }
+        
+        .job-card:hover .job-title {
+            color: var(--primary-color);
+        }
+        
+        .job-type {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: var(--radius-sm);
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .job-location {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #cbd5e0;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+        
+        .job-description {
+            color: #e2e8f0;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            font-size: 1rem;
+        }
+        
+        .job-requirements {
+            margin-bottom: 2rem;
+        }
+        
+        .requirements-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 1rem;
+        }
+        
+        .requirements-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .requirements-list li {
+            color: #cbd5e0;
+            padding: 0.5rem 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            margin-bottom: 0.5rem;
+            line-height: 1.5;
+        }
+        
+        .requirements-list i {
+            color: var(--primary-color);
+            font-size: 0.9rem;
+            margin-top: 0.25rem;
+            flex-shrink: 0;
+        }
+        
+        .apply-btn {
+            width: 100%;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: var(--radius-md);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+        }
+        
+        .apply-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(139, 92, 246, 0.4);
+        }
+        
+        .culture-section {
+            margin-top: 6rem;
+            padding: 4rem 0;
+            background: rgba(45, 27, 105, 0.3);
+        }
+        
+        .culture-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .culture-text h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 2rem;
+        }
+        
+        .culture-text p {
+            color: #e2e8f0;
+            line-height: 1.8;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .culture-image {
+            position: relative;
+            height: 400px;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-xl);
+            border: 2px solid var(--border-color);
+        }
+        
+        .culture-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        @media (max-width: 768px) {
+            .jobs-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .job-card {
+                padding: 2rem;
+            }
+            
+            .job-title {
+                font-size: 1.4rem;
+            }
+            
+            .culture-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .culture-text h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-network-wired"></i>
+                <span>Groupe La Passerelle</span>
+            </a>
+            
+            <div class="nav-links">
+                <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Accueil</a>
+                <a href="about.html" class="nav-link"><i class="fas fa-info-circle"></i> À propos</a>
+                <a href="expertises.html" class="nav-link"><i class="fas fa-microchip"></i> Expertises</a>
+                <a href="actualites.html" class="nav-link"><i class="fas fa-newspaper"></i> Actualités</a>
+                <a href="recrutement.html" class="nav-link active"><i class="fas fa-briefcase"></i> Recrutement</a>
+                <a href="contact.html" class="nav-link"><i class="fas fa-envelope"></i> Contact</a>
+                <a href="login.html" class="btn btn-outline"><i class="fas fa-sign-in-alt"></i> Connexion</a>
+            </div>
+            
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Recrutement Hero Section -->
+    <section class="recrutement-hero">
+        <div class="container">
+            <div class="section-header">
+                <h1 class="section-title">Rejoignez Groupe La Passerelle</h1>
+                <p class="section-subtitle">Des opportunités de carrière dans un environnement innovant et stimulant</p>
+            </div>
+            
+            <div class="jobs-grid">
+                <!-- Poste 1 -->
+                <div class="job-card">
+                    <div class="job-header">
+                        <div>
+                            <h3 class="job-title">Développeur Full-Stack Senior</h3>
+                            <div class="job-location">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Paris, France</span>
+                            </div>
+                        </div>
+                        <span class="job-type">CDI</span>
+                    </div>
+                    
+                    <p class="job-description">
+                        Nous recherchons un développeur expérimenté pour rejoindre notre équipe et participer 
+                        au développement de solutions innovantes pour nos clients.
+                    </p>
+                    
+                    <div class="job-requirements">
+                        <h4 class="requirements-title">Compétences requises :</h4>
+                        <ul class="requirements-list">
+                            <li><i class="fas fa-check"></i> 5+ ans d'expérience en développement web</li>
+                            <li><i class="fas fa-check"></i> Maîtrise de React, Node.js et Python</li>
+                            <li><i class="fas fa-check"></i> Expérience avec les bases de données SQL/NoSQL</li>
+                            <li><i class="fas fa-check"></i> Connaissance des méthodes Agiles</li>
+                            <li><i class="fas fa-check"></i> Anglais technique niveau B2+</li>
+                        </ul>
+                    </div>
+                    
+                    <button class="apply-btn">
+                        <i class="fas fa-paper-plane"></i>
+                        Postuler maintenant
+                    </button>
+                </div>
+
+                <!-- Poste 2 -->
+                <div class="job-card">
+                    <div class="job-header">
+                        <div>
+                            <h3 class="job-title">Administrateur Systèmes et Réseaux</h3>
+                            <div class="job-location">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Lyon, France</span>
+                            </div>
+                        </div>
+                        <span class="job-type">CDI</span>
+                    </div>
+                    
+                    <p class="job-description">
+                        Rejoignez notre équipe d'infrastructure pour garantir la performance, 
+                        la sécurité et la disponibilité de nos systèmes d'information.
+                    </p>
+                    
+                    <div class="job-requirements">
+                        <h4 class="requirements-title">Compétences requises :</h4>
+                        <ul class="requirements-list">
+                            <li><i class="fas fa-check"></i> 3+ ans d'expérience en administration systèmes</li>
+                            <li><i class="fas fa-check"></i> Maîtrise des environnements Windows/Linux</li>
+                            <li><i class="fas fa-check"></i> Expérience en virtualisation (VMware, Hyper-V)</li>
+                            <li><i class="fas fa-check"></i> Connaissance des protocoles réseau (TCP/IP, DNS, DHCP)</li>
+                            <li><i class="fas fa-check"></i> Certifications Cisco/Microsoft appréciées</li>
+                        </ul>
+                    </div>
+                    
+                    <button class="apply-btn">
+                        <i class="fas fa-paper-plane"></i>
+                        Postuler maintenant
+                    </button>
+                </div>
+
+                <!-- Poste 3 -->
+                <div class="job-card">
+                    <div class="job-header">
+                        <div>
+                            <h3 class="job-title">Data Scientist</h3>
+                            <div class="job-location">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Marseille, France</span>
+                            </div>
+                        </div>
+                        <span class="job-type">CDI</span>
+                    </div>
+                    
+                    <p class="job-description">
+                        Nous cherchons un expert en data science pour transformer nos données brutes 
+                        en informations stratégiques et créer des modèles prédictifs innovants.
+                    </p>
+                    
+                    <div class="job-requirements">
+                        <h4 class="requirements-title">Compétences requises :</h4>
+                        <ul class="requirements-list">
+                            <li><i class="fas fa-check"></i> Formation supérieure en statistiques ou informatique</li>
+                            <li><i class="fas fa-check"></i> Maîtrise de Python, R et SQL</li>
+                            <li><i class="fas fa-check"></i> Expérience avec Machine Learning et Deep Learning</li>
+                            <li><i class="fas fa-check"></i> Connaissance des outils Big Data (Hadoop, Spark)</li>
+                            <li><i class="fas fa-check"></i> Capacité à communiquer des résultats complexes</li>
+                        </ul>
+                    </div>
+                    
+                    <button class="apply-btn">
+                        <i class="fas fa-paper-plane"></i>
+                        Postuler maintenant
+                    </button>
+                </div>
+
+                <!-- Poste 4 -->
+                <div class="job-card">
+                    <div class="job-header">
+                        <div>
+                            <h3 class="job-title">Consultant Cybersécurité</h3>
+                            <div class="job-location">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Nantes, France</span>
+                            </div>
+                        </div>
+                        <span class="job-type">CDI</span>
+                    </div>
+                    
+                    <p class="job-description">
+                        Rejoignez notre équipe de cybersécurité pour protéger nos clients contre 
+                        les menaces numériques et garantir la sécurité de leurs systèmes.
+                    </p>
+                    
+                    <div class="job-requirements">
+                        <h4 class="requirements-title">Compétences requises :</h4>
+                        <ul class="requirements-list">
+                            <li><i class="fas fa-check"></i> 3+ ans d'expérience en cybersécurité</li>
+                            <li><i class="fas fa-check"></i> Connaissance des normes ISO 27001</li>
+                            <li><i class="fas fa-check"></i> Expérience en audit de sécurité</li>
+                            <li><i class="fas fa-check"></i> Maîtrise des outils SIEM et EDR</li>
+                            <li><i class="fas fa-check"></i> Certifications (CISSP, CEH, etc.) appréciées</li>
+                        </ul>
+                    </div>
+                    
+                    <button class="apply-btn">
+                        <i class="fas fa-paper-plane"></i>
+                        Postuler maintenant
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Culture Section -->
+    <section class="culture-section">
+        <div class="container">
+            <div class="culture-content">
+                <div class="culture-text">
+                    <h2>Pourquoi nous rejoindre ?</h2>
+                    <p>
+                        Chez Groupe La Passerelle, nous croyons en l'excellence technique et l'innovation permanente. 
+                        Rejoindre notre équipe, c'est intégrer une famille de passionnés qui partagent les mêmes valeurs : 
+                        curiosité, collaboration et ambition.
+                    </p>
+                    <p>
+                        Nous offrons un environnement de travail stimulant avec des projets variés, 
+                        des formations continues et des opportunités d'évolution réelles. 
+                        Votre croissance professionnelle est notre priorité.
+                    </p>
+                    <p>
+                        Rejoignez-nous pour participer à des projets qui ont un impact réel 
+                        sur la transformation digitale des entreprises.
+                    </p>
+                </div>
+                <div class="culture-image">
+                    <img src="https://images.unsplash.com/photo-15152453464019-a6e471a0f6e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Notre équipe">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-network-wired"></i>
+                        <span>Groupe La Passerelle</span>
+                    </div>
+                    <p class="footer-description">
+                        Groupe La Passerelle est une entreprise de services du numérique (ESN). Elle souhaite lancer son site internet pour promouvoir ses expertises techniques auprès de clients professionnels.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 class="footer-title">Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="expertises.html">Développement Web</a></li>
+                        <li><a href="expertises.html">Applications Mobiles</a></li>
+                        <li><a href="expertises.html">Cloud & DevOps</a></li>
+                        <li><a href="expertises.html">Intelligence Artificielle</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 class="footer-title">Carrières</h4>
+                    <ul class="footer-links">
+                        <li><a href="recrutement.html">Postes disponibles</a></li>
+                        <li><a href="recrutement.html">Alternances</a></li>
+                        <li><a href="recrutement.html">Stages</a></li>
+                        <li><a href="recrutement.html">Vie chez nous</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 class="footer-title">Légal</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Conditions d'utilisation</a></li>
+                        <li><a href="#">Politique de confidentialité</a></li>
+                        <li><a href="#">Mentions légales</a></li>
+                        <li><a href="#">Cookies</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 Groupe La Passerelle. Tous droits réservés.</p>
+                <p>ESN - Entreprise de Services du Numérique</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="base.js"></script>
+</body>
+</html>

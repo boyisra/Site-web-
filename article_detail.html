@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Groupe La Passerelle - Détails de l'article</title>
+    <link rel="icon" href="logo1.jpg"/>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="icon.ico">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-network-wired"></i>
+                <span>Groupe La Passerelle</span>
+            </a>
+            
+            <div class="nav-links">
+                <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Accueil</a>
+                <a href="about.html" class="nav-link"><i class="fas fa-info-circle"></i> À propos</a>
+                <a href="contact.html" class="nav-link"><i class="fas fa-envelope"></i> Contact</a>
+                <a href="articles.html" class="nav-link"><i class="fas fa-newspaper"></i> Articles</a>
+                <a href="profile.html" class="nav-link"><i class="fas fa-user"></i> Profil</a>
+                <a href="article_form.html" class="nav-link"><i class="fas fa-edit"></i> Rédiger</a>
+                <a href="search_results.html" class="nav-link"><i class="fas fa-search"></i> Recherche</a>
+                <a href="article_detail.html" class="nav-link active"><i class="fas fa-file-alt"></i> Détail</a>
+                <a href="login.html" class="btn btn-outline"><i class="fas fa-sign-in-alt"></i> Connexion</a>
+                <a href="register.html" class="btn btn-primary"><i class="fas fa-user-plus"></i> Inscription</a>
+            </div>
+            
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Article Header Section -->
+    <section class="article-header-section">
+        <div class="article-header-container">
+            <div class="article-header-content">
+                <div class="article-header-text">
+                    <h1 class="article-header-title">L'intelligence artificielle transforme notre quotidien</h1>
+                    <div class="article-header-meta">
+                        <div class="article-stats">
+                            <div class="stat-item">
+                                <i class="fas fa-eye"></i>
+                                <span>1.2k vues</span>
+                            </div>
+                            <div class="stat-item">
+                                <i class="fas fa-clock"></i>
+                                <span>8 min de lecture</span>
+                            </div>
+                            <div class="stat-item">
+                                <i class="fas fa-heart"></i>
+                                <span>245 likes</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="article-header-image">
+                    <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Article Header">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Article Content Section -->
+    <section class="article-content-section">
+        <div class="article-container">
+            <div class="article-main">
+                <article class="article-detail">
+                    <div class="article-category-bar">
+                        <div class="article-category">Technologie</div>
+                        <div class="article-actions">
+                            <button class="action-btn like-btn" onclick="toggleLike(1)">
+                                <i class="fas fa-heart"></i>
+                                <span class="like-count">245</span>
+                            </button>
+                            <button class="action-btn bookmark-btn" onclick="toggleBookmark()">
+                                <i class="fas fa-bookmark"></i>
+                            </button>
+                            <button class="action-btn share-btn" onclick="showShareModal()">
+                                <i class="fas fa-share"></i>
+                            </button>
+                            <button class="action-btn favorite-btn" onclick="toggleFavorite()">
+                                <i class="fas fa-star"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Article Navigation Buttons -->
+                    <div class="article-navigation-buttons">
+                        <button class="nav-article-btn prev-article-btn" onclick="previousArticle()">
+                            <i class="fas fa-chevron-left"></i>
+                            <span>Article précédent</span>
+                        </button>
+                        <div class="nav-article-info">
+                            <span class="current-article-num">Article 1 sur 5</span>
+                            <div class="nav-dots">
+                                <span class="nav-dot active" data-article="1"></span>
+                                <span class="nav-dot" data-article="2"></span>
+                                <span class="nav-dot" data-article="3"></span>
+                                <span class="nav-dot" data-article="4"></span>
+                                <span class="nav-dot" data-article="5"></span>
+                            </div>
+                        </div>
+                        <button class="nav-article-btn next-article-btn" onclick="nextArticle()">
+                            <span>Article suivant</span>
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+
+                    <div class="article-body">
+                        <p class="article-intro">
+                            L'intelligence artificielle n'est plus une simple promesse technologique, mais une réalité qui transforme profondément notre façon de vivre, de travailler et d'interagir avec le monde qui nous entoure. Des assistants virtuels aux voitures autonomes, en passant par les systèmes de recommandation personnalisés, l'IA s'est intégrée dans notre quotidien de manière souvent invisible mais toujours plus présente.
+                        </p>
+
+                        <h2>Une révolution silencieuse</h2>
+                        <p>
+                            La révolution de l'intelligence artificielle ne s'est pas faite avec bruit et fracas, mais plutôt par une intégration progressive et subtile dans nos outils du quotidien. Chaque fois que vous utilisez un service de streaming qui vous suggère des contenus, chaque fois que votre smartphone reconnaît votre visage pour vous déverrouiller, ou chaque fois que vous demandez à un assistant vocal la météo, vous interagissez avec une forme d'intelligence artificielle.
+                        </p>
+
+                        <blockquote class="article-quote">
+                            "L'intelligence artificielle est la nouvelle électricité. Elle va transformer chaque industrie et créer de nouvelles opportunités que nous commençons à peine à imaginer." - Andrew Ng
+                        </blockquote>
+
+                        <h3>Les domaines d'application</h3>
+                        <p>
+                            Les applications de l'IA se multiplient dans tous les secteurs d'activité. Dans le domaine de la santé, les algorithmes d'IA aident les médecins à poser des diagnostics plus précis et à développer des traitements personnalisés. Dans le secteur financier, ils détectent les fraudes et optimisent les investissements. Dans l'éducation, ils adaptent les parcours d'apprentissage aux besoins individuels de chaque étudiant.
+                        </p>
+
+                        <div class="article-image-full">
+                            <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Applications de l'IA">
+                            <figcaption>Les différentes applications de l'intelligence artificielle dans notre société</figcaption>
+                        </div>
+
+                        <h3>Défis et opportunités</h3>
+                        <p>
+                            Malgré son potentiel immense, l'intelligence artificielle soulève également des questions importantes concernant l'éthique, la confidentialité des données et l'impact sur l'emploi. La transparence des algorithmes, la prévention des biais et la garantie d'une utilisation responsable sont autant de défis que notre société doit relever pour garantir que cette technologie bénéficie à tous.
+                        </p>
+
+                        <div class="article-tags">
+                            <span class="tag">Intelligence Artificielle</span>
+                            <span class="tag">Technologie</span>
+                            <span class="tag">Innovation</span>
+                            <span class="tag">Digital</span>
+                        </div>
+                    </div>
+
+                    <div class="article-footer">
+                        <div class="author-bio">
+                            <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="Auteur" class="author-avatar-large">
+                            <div class="author-info">
+                                <h4>Marie Dupont</h4>
+                                <p>Journaliste technologique et experte en intelligence artificielle. Passionnée par l'impact des nouvelles technologies sur notre société.</p>
+                                <div class="author-social">
+                                    <a href="#"><i class="fab fa-twitter"></i></a>
+                                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                                    <a href="#"><i class="fas fa-globe"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Article Navigation Section -->
+    <section class="article-navigation">
+        <div class="container">
+            <div class="nav-header">
+                <h2>Explorer d'autres articles</h2>
+                <p>Découvrez plus de contenu intéressant</p>
+            </div>
+            
+            <div class="articles-carousel">
+                <div class="carousel-controls">
+                    <button class="carousel-btn prev-btn" onclick="previousArticle()">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="carousel-btn next-btn" onclick="nextArticle()">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+                
+                <div class="articles-grid" id="articlesGrid">
+                    <!-- Article 1 -->
+                    <article class="nav-article-card active" data-id="1">
+                        <div class="nav-article-image">
+                            <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Article 1">
+                            <div class="nav-article-overlay">
+                                <button class="btn-view" onclick="viewArticle(1)">
+                                    <i class="fas fa-eye"></i> Voir
+                                </button>
+                            </div>
+                        </div>
+                        <div class="nav-article-content">
+                            <h3>L'intelligence artificielle transforme notre quotidien</h3>
+                            <p>Marie Dupont</p>
+                            <div class="nav-article-meta">
+                                <span><i class="fas fa-eye"></i> 1.2k</span>
+                                <span><i class="fas fa-heart"></i> 245</span>
+                            </div>
+                        </div>
+                    </article>
+                    
+                    <!-- Article 2 -->
+                    <article class="nav-article-card" data-id="2">
+                        <div class="nav-article-image">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Article 2">
+                            <div class="nav-article-overlay">
+                                <button class="btn-view" onclick="viewArticle(2)">
+                                    <i class="fas fa-eye"></i> Voir
+                                </button>
+                            </div>
+                        </div>
+                        <div class="nav-article-content">
+                            <h3>Python pour la data science</h3>
+                            <p>Sophie Laurent</p>
+                            <div class="nav-article-meta">
+                                <span><i class="fas fa-eye"></i> 890</span>
+                                <span><i class="fas fa-heart"></i> 156</span>
+                            </div>
+                        </div>
+                    </article>
+                    
+                    <!-- Article 3 -->
+                    <article class="nav-article-card" data-id="3">
+                        <div class="nav-article-image">
+                            <img src="https://images.unsplash.com/photo-1633356122544-f134324a6cee?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Article 3">
+                            <div class="nav-article-overlay">
+                                <button class="btn-view" onclick="viewArticle(3)">
+                                    <i class="fas fa-eye"></i> Voir
+                                </button>
+                            </div>
+                        </div>
+                        <div class="nav-article-content">
+                            <h3>React Hooks : Guide pratique</h3>
+                            <p>Alex Petit</p>
+                            <div class="nav-article-meta">
+                                <span><i class="fas fa-eye"></i> 1.5k</span>
+                                <span><i class="fas fa-heart"></i> 312</span>
+                            </div>
+                        </div>
+                    </article>
+                    
+                    <!-- Article 4 -->
+                    <article class="nav-article-card" data-id="4">
+                        <div class="nav-article-image">
+                            <img src="https://images.unsplash.com/photo-1559028012-cda1db361bc8?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Article 4">
+                            <div class="nav-article-overlay">
+                                <button class="btn-view" onclick="viewArticle(4)">
+                                    <i class="fas fa-eye"></i> Voir
+                                </button>
+                            </div>
+                        </div>
+                        <div class="nav-article-content">
+                            <h3>UI/UX : Les principes fondamentaux</h3>
+                            <p>Isabelle Dubois</p>
+                            <div class="nav-article-meta">
+                                <span><i class="fas fa-eye"></i> 734</span>
+                                <span><i class="fas fa-heart"></i> 98</span>
+                            </div>
+                        </div>
+                    </article>
+                    
+                    <!-- Article 5 -->
+                    <article class="nav-article-card" data-id="5">
+                        <div class="nav-article-image">
+                            <img src="https://images.unsplash.com/photo-1603891166306-2e2fedb6b7f7?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Article 5">
+                            <div class="nav-article-overlay">
+                                <button class="btn-view" onclick="viewArticle(5)">
+                                    <i class="fas fa-eye"></i> Voir
+                                </button>
+                            </div>
+                        </div>
+                        <div class="nav-article-content">
+                            <h3>Docker : Conteneurisation simplifiée</h3>
+                            <p>Nicolas Petit</p>
+                            <div class="nav-article-meta">
+                                <span><i class="fas fa-eye"></i> 567</span>
+                                <span><i class="fas fa-heart"></i> 89</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-network-wired"></i>
+                        <span>Groupe La Passerelle</span>
+                    </div>
+                    <p class="footer-description">
+                        Groupe La Passerelle est une entreprise de services du numérique (ESN). Elle souhaite lancer son site internet pour promouvoir ses expertises techniques auprès de clients professionnels.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 class="footer-title">Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Développement Web</a></li>
+                        <li><a href="#">Applications Mobiles</a></li>
+                        <li><a href="#">Cloud & DevOps</a></li>
+                        <li><a href="#">Intelligence Artificielle</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 class="footer-title">Expertises</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">JavaScript</a></li>
+                        <li><a href="#">Python</a></li>
+                        <li><a href="#">React & Vue.js</a></li>
+                        <li><a href="#">Node.js</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 class="footer-title">Légal</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Conditions d'utilisation</a></li>
+                        <li><a href="#">Politique de confidentialité</a></li>
+                        <li><a href="#">Mentions légales</a></li>
+                        <li><a href="#">Cookies</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 Groupe La Passerelle. Tous droits réservés.</p>
+                <p>ESN - Entreprise de Services du Numérique</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Article data
+        const articles = {
+            1: {
+                title: "L'intelligence artificielle transforme notre quotidien",
+                author: "Marie Dupont",
+                category: "Technologie",
+                date: "15 Mars 2024",
+                views: "1.2k",
+                likes: 245,
+                image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                content: `
+                    <p class="article-intro">
+                        L'intelligence artificielle n'est plus une simple promesse technologique, mais une réalité qui transforme profondément notre façon de vivre, de travailler et d'interagir avec le monde qui nous entoure. Des assistants virtuels aux voitures autonomes, en passant par les systèmes de recommandation personnalisés, l'IA s'est intégrée dans notre quotidien de manière souvent invisible mais toujours plus présente.
+                    </p>
+                    <h2>Une révolution silencieuse</h2>
+                    <p>
+                        La révolution de l'intelligence artificielle ne s'est pas faite avec bruit et fracas, mais plutôt par une intégration progressive et subtile dans nos outils du quotidien. Chaque fois que vous utilisez un service de streaming qui vous suggère des contenus, chaque fois que votre smartphone reconnaît votre visage pour vous déverrouiller, ou chaque fois que vous demandez à un assistant vocal la météo, vous interagissez avec une forme d'intelligence artificielle.
+                    </p>
+                    <blockquote class="article-quote">
+                        "L'intelligence artificielle est la nouvelle électricité. Elle va transformer chaque industrie et créer de nouvelles opportunités que nous commençons à peine à imaginer." - Andrew Ng
+                    </blockquote>
+                    <h3>Les domaines d'application</h3>
+                    <p>
+                        Les applications de l'IA se multiplient dans tous les secteurs d'activité. Dans le domaine de la santé, les algorithmes d'IA aident les médecins à poser des diagnostics plus précis et à développer des traitements personnalisés. Dans le secteur financier, ils détectent les fraudes et optimisent les investissements. Dans l'éducation, ils adaptent les parcours d'apprentissage aux besoins individuels de chaque étudiant.
+                    </p>
+                    <div class="article-image-full">
+                        <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Applications de l'IA">
+                        <figcaption>Les différentes applications de l'intelligence artificielle dans notre société</figcaption>
+                    </div>
+                    <h3>Défis et opportunités</h3>
+                    <p>
+                        Malgré son potentiel immense, l'intelligence artificielle soulève également des questions importantes concernant l'éthique, la confidentialité des données et l'impact sur l'emploi. La transparence des algorithmes, la prévention des biais et la garantie d'une utilisation responsable sont autant de défis que notre société doit relever pour garantir que cette technologie bénéficie à tous.
+                    </p>
+                `
+            },
+            2: {
+                title: "Python pour la data science",
+                author: "Sophie Laurent",
+                category: "Data Science",
+                date: "12 Mars 2024",
+                views: "890",
+                likes: 156,
+                image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                content: `
+                    <p class="article-intro">
+                        Python est devenu le langage de référence pour la data science. Avec ses bibliothèques puissantes comme NumPy, Pandas et Scikit-learn, il permet aux data scientists de manipuler, analyser et visualiser des données complexes avec une facilité déconcertante.
+                    </p>
+                    <h2>Pourquoi Python pour la data science ?</h2>
+                    <p>
+                        La popularité de Python dans le domaine de la data science s'explique par plusieurs facteurs : sa syntaxe simple et lisible, son écosystème riche en bibliothèques spécialisées, et sa communauté active qui contribue constamment à l'amélioration des outils existants.
+                    </p>
+                    <h3>Les bibliothèques essentielles</h3>
+                    <p>
+                        NumPy pour les calculs numériques, Pandas pour la manipulation de données, Matplotlib et Seaborn pour la visualisation, et Scikit-learn pour le machine learning. Ces bibliothèques forment le socle sur lequel reposent la plupart des projets de data science.
+                    </p>
+                `
+            },
+            3: {
+                title: "React Hooks : Guide pratique",
+                author: "Alex Petit",
+                category: "JavaScript",
+                date: "10 Mars 2024",
+                views: "1.5k",
+                likes: 312,
+                image: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                content: `
+                    <p class="article-intro">
+                        Les React Hooks ont révolutionné la façon dont nous écrivons des composants React. Ils permettent d'utiliser l'état et d'autres fonctionnalités React sans écrire de classe, rendant le code plus concis et réutilisable.
+                    </p>
+                    <h2>Comprendre les Hooks</h2>
+                    <p>
+                        Les Hooks sont des fonctions qui vous permettent d'utiliser les fonctionnalités React dans vos composants fonctionnels. useState, useEffect, useContext... chaque Hook répond à un besoin spécifique et simplifie grandement le développement.
+                    </p>
+                    <h3>Les Hooks les plus utilisés</h3>
+                    <p>
+                        useState pour gérer l'état local, useEffect pour les effets de bord, useContext pour accéder au contexte, et bien d'autres. Maîtriser ces Hooks est essentiel pour tout développeur React moderne.
+                    </p>
+                `
+            },
+            4: {
+                title: "UI/UX : Les principes fondamentaux",
+                author: "Isabelle Dubois",
+                category: "Design",
+                date: "8 Mars 2024",
+                views: "734",
+                likes: 98,
+                image: "https://images.unsplash.com/photo-1559028012-cda1db361bc8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                content: `
+                    <p class="article-intro">
+                        Le design d'interface et l'expérience utilisateur sont au cœur de la réussite d'un produit numérique. Comprendre les principes fondamentaux de l'UI/UX permet de créer des applications intuitives et agréables à utiliser.
+                    </p>
+                    <h2>L'importance de l'UX</h2>
+                    <p>
+                        Une bonne expérience utilisateur se traduit par une meilleure rétention, une plus grande satisfaction des clients et ultimately, une meilleure performance commerciale. L'UX n'est pas juste une question d'esthétique, c'est une approche centrée sur l'utilisateur.
+                    </p>
+                    <h3>Les principes clés</h3>
+                    <p>
+                        La clarté, la cohérence, la feedback et la simplicité sont des piliers de l'UX design. Chaque décision de design doit être prise en pensant à l'utilisateur final et à ses besoins.
+                    </p>
+                `
+            },
+            5: {
+                title: "Docker : Conteneurisation simplifiée",
+                author: "Nicolas Petit",
+                category: "DevOps",
+                date: "6 Mars 2024",
+                views: "567",
+                likes: 89,
+                image: "https://images.unsplash.com/photo-1603891166306-2e2fedb6b7f7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                content: `
+                    <p class="article-intro">
+                        Docker a révolutionné la façon dont nous développons, déployons et gérons les applications. La conteneurisation permet de créer des environnements isolés et reproductibles, simplifiant grandement le déploiement et la scalabilité.
+                    </p>
+                    <h2>Qu'est-ce que Docker ?</h2>
+                    <p>
+                        Docker est une plateforme qui utilise la technologie de conteneurisation pour empaqueter des applications avec toutes leurs dépendances. Cela garantit que l'application s'exécute de la même manière, peu importe où elle est déployée.
+                    </p>
+                    <h3>Les avantages de Docker</h3>
+                    <p>
+                        Portabilité, efficacité, isolation et rapidité de déploiement. Docker permet aux développeurs de se concentrer sur le code sans se soucier de l'environnement d'exécution.
+                    </p>
+                `
+            }
+        };
+
+        let currentArticle = 1;
+        let favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+
+        // Article navigation functions
+        function viewArticle(articleId) {
+            currentArticle = articleId;
+            const article = articles[articleId];
+            
+            if (article) {
+                // Update article content
+                document.querySelector('.article-header-title').textContent = article.title;
+                document.querySelector('.author-name').textContent = article.author;
+                document.querySelector('.article-date').textContent = article.date;
+                document.querySelector('.article-category').textContent = article.category;
+                document.querySelector('.like-count').textContent = article.likes;
+                document.querySelector('.article-body').innerHTML = article.content;
+                
+                // Update header image
+                document.querySelector('.article-header-image img').src = article.image;
+                
+                // Update active state in carousel
+                document.querySelectorAll('.nav-article-card').forEach(card => {
+                    card.classList.remove('active');
+                });
+                document.querySelector(`[data-id="${articleId}"]`).classList.add('active');
+                
+                // Update navigation buttons
+                updateNavigationButtons();
+                
+                // Update favorite button
+                updateFavoriteButton();
+                
+                // Scroll to top
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+
+        function updateNavigationButtons() {
+            // Update article counter
+            document.querySelector('.current-article-num').textContent = `Article ${currentArticle} sur 5`;
+            
+            // Update navigation dots
+            document.querySelectorAll('.nav-dot').forEach(dot => {
+                dot.classList.remove('active');
+                if (parseInt(dot.getAttribute('data-article')) === currentArticle) {
+                    dot.classList.add('active');
+                }
+            });
+            
+            // Update button states
+            const prevBtn = document.querySelector('.prev-article-btn');
+            const nextBtn = document.querySelector('.next-article-btn');
+            
+            prevBtn.disabled = currentArticle === 1;
+            nextBtn.disabled = currentArticle === 5;
+        }
+
+        function previousArticle() {
+            const prevId = currentArticle > 1 ? currentArticle - 1 : 5;
+            viewArticle(prevId);
+        }
+
+        function nextArticle() {
+            const nextId = currentArticle < 5 ? currentArticle + 1 : 1;
+            viewArticle(nextId);
+        }
+
+        // Like function
+        function toggleLike(articleId) {
+            const likeBtn = document.querySelector('.like-btn');
+            const likeCount = document.querySelector('.like-count');
+            
+            if (likeBtn.classList.contains('liked')) {
+                likeBtn.classList.remove('liked');
+                likeCount.textContent = parseInt(likeCount.textContent) - 1;
+            } else {
+                likeBtn.classList.add('liked');
+                likeCount.textContent = parseInt(likeCount.textContent) + 1;
+            }
+        }
+
+        // Bookmark function
+        function toggleBookmark() {
+            const bookmarkBtn = document.querySelector('.bookmark-btn');
+            bookmarkBtn.classList.toggle('bookmarked');
+            
+            const isBookmarked = bookmarkBtn.classList.contains('bookmarked');
+            showNotification(isBookmarked ? 'Article ajouté aux favoris !' : 'Article retiré des favoris');
+        }
+
+        // Favorite function
+        function toggleFavorite() {
+            const favoriteBtn = document.querySelector('.favorite-btn');
+            const articleId = currentArticle;
+            
+            if (favorites.includes(articleId)) {
+                favorites = favorites.filter(id => id !== articleId);
+                favoriteBtn.classList.remove('favorited');
+                showNotification('Article retiré des favoris');
+            } else {
+                favorites.push(articleId);
+                favoriteBtn.classList.add('favorited');
+                showNotification('Article ajouté aux favoris !');
+            }
+            
+            localStorage.setItem('favorites', JSON.stringify(favorites));
+        }
+
+        function updateFavoriteButton() {
+            const favoriteBtn = document.querySelector('.favorite-btn');
+            if (favorites.includes(currentArticle)) {
+                favoriteBtn.classList.add('favorited');
+            } else {
+                favoriteBtn.classList.remove('favorited');
+            }
+        }
+
+        // Share function
+        function showShareModal() {
+            const shareUrl = window.location.href;
+            const shareTitle = document.querySelector('.article-hero-title').textContent;
+            
+            // Create share modal
+            const modal = document.createElement('div');
+            modal.className = 'share-modal';
+            modal.innerHTML = `
+                <div class="share-modal-content">
+                    <div class="share-modal-header">
+                        <h3>Partager cet article</h3>
+                        <button class="close-btn" onclick="closeShareModal()">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    <div class="share-options">
+                        <button class="share-option" onclick="shareOnSocial('facebook')">
+                            <i class="fab fa-facebook"></i> Facebook
+                        </button>
+                        <button class="share-option" onclick="shareOnSocial('twitter')">
+                            <i class="fab fa-twitter"></i> Twitter
+                        </button>
+                        <button class="share-option" onclick="shareOnSocial('linkedin')">
+                            <i class="fab fa-linkedin"></i> LinkedIn
+                        </button>
+                        <button class="share-option" onclick="copyLink()">
+                            <i class="fas fa-link"></i> Copier le lien
+                        </button>
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(modal);
+            setTimeout(() => modal.classList.add('show'), 10);
+        }
+
+        function closeShareModal() {
+            const modal = document.querySelector('.share-modal');
+            if (modal) {
+                modal.classList.remove('show');
+                setTimeout(() => modal.remove(), 300);
+            }
+        }
+
+        function shareOnSocial(platform) {
+            const shareUrl = window.location.href;
+            const shareTitle = document.querySelector('.article-hero-title').textContent;
+            
+            let url = '';
+            switch(platform) {
+                case 'facebook':
+                    url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`;
+                    break;
+                case 'twitter':
+                    url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareTitle)}&url=${encodeURIComponent(shareUrl)}`;
+                    break;
+                case 'linkedin':
+                    url = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`;
+                    break;
+            }
+            
+            if (url) {
+                window.open(url, '_blank', 'width=600,height=400');
+            }
+            closeShareModal();
+        }
+
+        function copyLink() {
+            const shareUrl = window.location.href;
+            navigator.clipboard.writeText(shareUrl).then(() => {
+                showNotification('Lien copié dans le presse-papiers !');
+                closeShareModal();
+            });
+        }
+
+        // Notification function
+        function showNotification(message) {
+            const notification = document.createElement('div');
+            notification.className = 'notification';
+            notification.textContent = message;
+            
+            document.body.appendChild(notification);
+            setTimeout(() => notification.classList.add('show'), 10);
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+                setTimeout(() => notification.remove(), 300);
+            }, 3000);
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            updateFavoriteButton();
+            updateNavigationButtons();
+            
+            // Add click handlers for navigation dots
+            document.querySelectorAll('.nav-dot').forEach(dot => {
+                dot.addEventListener('click', function() {
+                    const articleId = parseInt(this.getAttribute('data-article'));
+                    viewArticle(articleId);
+                });
+            });
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowLeft') {
+                previousArticle();
+            } else if (e.key === 'ArrowRight') {
+                nextArticle();
+            }
+        });
+    </script>
+</body>
+</html>

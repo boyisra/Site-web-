@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Articles - Groupe La Passerelle</title>
+    <link rel="shortcut icon" href="logo1.jpg"/>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="icon.ico">
+    <style>
+        .articles-hero {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+        }
+        
+        .articles-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .articles-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .articles-header h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: var(--dark-color);
+        }
+        
+        .articles-header p {
+            font-size: 1.125rem;
+            color: var(--gray-color);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 2rem;
+        }
+        
+        .sidebar {
+            position: sticky;
+            top: 100px;
+            height: fit-content;
+        }
+        
+        .search-box {
+            background: white;
+            padding: 1.5rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            margin-bottom: 2rem;
+        }
+        
+        .search-box h3 {
+            font-size: 1.125rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--dark-color);
+        }
+        
+        .search-input-group {
+            position: relative;
+        }
+        
+        .search-input {
+            width: 100%;
+            padding: 0.75rem 2.5rem 0.75rem 1rem;
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-md);
+            font-size: 0.875rem;
+            transition: var(--transition);
+        }
+        
+        .search-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+        
+        .search-button {
+            position: absolute;
+            right: 0.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: var(--primary-color);
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+        
+        .categories {
+            background: white;
+            padding: 1.5rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            margin-bottom: 2rem;
+        }
+        
+        .categories h3 {
+            font-size: 1.125rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--dark-color);
+        }
+        
+        .category-list {
+            display: grid;
+            gap: 0.5rem;
+        }
+        
+        .category-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.75rem 1rem;
+            background: white;
+            border: 2px solid #000000;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .category-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .category-item:hover::before {
+            left: 100%;
+        }
+
+        .category-item:hover {
+            background: rgba(102, 126, 234, 0.1);
+            border-color: var(--primary-color);
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+        }
+
+        .category-item.active {
+            background: rgba(102, 126, 234, 0.2);
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+            transform: scale(1.02);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+        }
+        
+        .category-name {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 600;
+            color: #000000;
+        }
+        
+        .category-item:hover .category-name {
+            color: var(--primary-color);
+        }
+        
+        .category-count {
+            background: var(--border-color);
+            color: var(--gray-color);
+            padding: 0.25rem 0.5rem;
+            border-radius: var(--radius-sm);
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        
+        .tags-cloud {
+            background: white;
+            padding: 1.5rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .tags-cloud h3 {
+            font-size: 1.125rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--dark-color);
+        }
+        
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .tag {
+            padding: 0.5rem 1rem;
+            background: rgba(102, 126, 234, 0.1);
+            color: var(--primary-color);
+            border-radius: var(--radius-md);
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+        
+        .tag:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+        
+        .articles-grid {
+            display: grid;
+            gap: 2rem;
+        }
+        
+        .article-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+        }
+        
+        .article-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .article-image {
+            position: relative;
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .article-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .article-card:hover .article-image img {
+            transform: scale(1.05);
+        }
+        
+        .article-category {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: var(--primary-color);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: var(--radius-md);
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        
+        .article-content {
+            padding: 1.5rem;
+        }
+        
+        .article-meta {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            font-size: 0.875rem;
+            color: var(--gray-color);
+        }
+        
+        .article-author {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .author-avatar {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        
+        .article-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: var(--dark-color);
+            line-height: 1.4;
+        }
+        
+        .article-title a {
+            color: inherit;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .article-title a:hover {
+            color: var(--primary-color);
+        }
+        
+        .article-excerpt {
+            color: var(--gray-color);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        
+        .article-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .article-stats {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 0.875rem;
+            color: var(--gray-color);
+        }
+        
+        .article-stat {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+        
+        .read-more {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.875rem;
+            transition: var(--transition);
+        }
+        
+        .read-more:hover {
+            color: var(--secondary-color);
+        }
+        
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 3rem;
+        }
+        
+        .pagination-button {
+            padding: 0.5rem 1rem;
+            border: 2px solid var(--border-color);
+            background: white;
+            color: var(--dark-color);
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+        
+        .pagination-button:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+        
+        .pagination-button.active {
+            background: var(--primary-color);
+            border-color: var(--primary-color);
+            color: white;
+        }
+        
+        .pagination-button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        @media (max-width: 768px) {
+            .articles-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .sidebar {
+                position: static;
+            }
+            
+            .articles-header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-network-wired"></i>
+                <span>Groupe La Passerelle</span>
+            </a>
+            
+            <div class="nav-links">
+                <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Accueil</a>
+                <a href="about.html" class="nav-link"><i class="fas fa-info-circle"></i> À propos</a>
+                <a href="contact.html" class="nav-link"><i class="fas fa-envelope"></i> Contact</a>
+                <a href="articles.html" class="nav-link active"><i class="fas fa-newspaper"></i> Articles</a>
+                <a href="profile.html" class="nav-link"><i class="fas fa-user"></i> Profil</a>
+                <a href="article_form.html" class="nav-link"><i class="fas fa-edit"></i> Rédiger</a>
+                <a href="search_results.html" class="nav-link"><i class="fas fa-search"></i> Recherche</a>
+                <a href="article_detail.html" class="nav-link"><i class="fas fa-file-alt"></i> Détail</a>
+                <a href="login.html" class="btn btn-outline"><i class="fas fa-sign-in-alt"></i> Connexion</a>
+                <a href="register.html" class="btn btn-primary"><i class="fas fa-user-plus"></i> Inscription</a>
+            </div>
+            
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Articles Hero Section -->
+    <section class="articles-hero">
+        <div class="articles-container">
+            <div class="articles-header">
+                <h1>Tous nos articles</h1>
+                <p>Découvrez les derniers articles de notre communauté de développeurs passionnés</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Articles Section -->
+        <section class="articles-section">
+            <header class="articles-header">
+                <h1>Tous les articles</h1>
+                <p>Découvrez nos derniers articles sur le développement web, le design et les nouvelles technologies</p>
+            </header>
+            
+            <!-- Search Bar -->
+            <div class="search-box">
+                <div class="search-input-wrapper">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchInput" placeholder="Rechercher un article...">
+                </div>
+                <button class="search-button">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+            
+            <!-- Articles Grid -->
+            <div class="articles-grid" id="articlesGrid">
+                <!-- Article 1 -->
+                <article class="article-card" data-category="javascript">
+                    <div class="article-image">
+                        <img src="https://images.unsplash.com/photo-1627398242454-45a1465c2479?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Article image">
+                        <span class="article-category">JavaScript</span>
+                    </div>
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <span class="article-date">15 janvier 2026</span>
+                            <span class="article-author">Marie Dubois</span>
+                        </div>
+                        <h3 class="article-title">Les dernières tendances JavaScript en 2026</h3>
+                        <p class="article-excerpt">
+                            Découvrez les nouvelles fonctionnalités de ES2026 et comment elles vont transformer votre façon de coder...
+                        </p>
+                        <div class="article-stats">
+                            <span><i class="fas fa-eye"></i> 1.2k vues</span>
+                            <span><i class="fas fa-heart"></i> 42 likes</span>
+                            <span><i class="fas fa-comment"></i> 8 commentaires</span>
+                        </div>
+                        <a href="article_detail.html" class="read-more">Lire la suite →</a>
+                    </div>
+                </article>
+                
+                <!-- Article 2 -->
+                <article class="article-card" data-category="python">
+                    <div class="article-image">
+                        <img src="https://images.unsplash.com/photo-1526379095098-d400fd0bf935?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Article image">
+                        <span class="article-category">Python</span>
+                    </div>
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <span class="article-date">12 janvier 2026</span>
+                            <span class="article-author">Jean Martin</span>
+                        </div>
+                        <h3 class="article-title">Django avancé : Optimisation et performance</h3>
+                        <p class="article-excerpt">
+                            Apprenez à optimiser vos applications Django pour des performances maximales en production...
+                        </p>
+                        <div class="article-stats">
+                            <span><i class="fas fa-eye"></i> 856 vues</span>
+                            <span><i class="fas fa-heart"></i> 31 likes</span>
+                            <span><i class="fas fa-comment"></i> 12 commentaires</span>
+                        </div>
+                        <a href="article_detail.html" class="read-more">Lire la suite →</a>
+                    </div>
+                </article>
+                
+                <!-- Article 3 -->
+                <article class="article-card" data-category="design">
+                    <div class="article-image">
+                        <img src="https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Article image">
+                        <span class="article-category">Design</span>
+                    </div>
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <span class="article-date">10 janvier 2026</span>
+                            <span class="article-author">Sophie Laurent</span>
+                        </div>
+                        <h3 class="article-title">UI/UX : Les principes du design moderne</h3>
+                        <p class="article-excerpt">
+                            Explorez les fondamentaux du design d'interface et comment créer des expériences utilisateur mémorables...
+                        </p>
+                        <div class="article-stats">
+                            <span><i class="fas fa-eye"></i> 2.1k vues</span>
+                            <span><i class="fas fa-heart"></i> 67 likes</span>
+                            <span><i class="fas fa-comment"></i> 15 commentaires</span>
+                        </div>
+                        <a href="article_detail.html" class="read-more">Lire la suite →</a>
+                    </div>
+                </article>
+                
+                <!-- Article 4 -->
+                <article class="article-card" data-category="devops">
+                    <div class="article-image">
+                        <img src="https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Article image">
+                        <span class="article-category">DevOps</span>
+                    </div>
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <span class="article-date">8 janvier 2026</span>
+                            <span class="article-author">Thomas Bernard</span>
+                        </div>
+                        <h3 class="article-title">Docker et Kubernetes : Guide complet</h3>
+                        <p class="article-excerpt">
+                            Maîtrisez la conteneurisation et l'orchestration pour déployer vos applications à grande échelle...
+                        </p>
+                        <div class="article-stats">
+                            <span><i class="fas fa-eye"></i> 1.5k vues</span>
+                            <span><i class="fas fa-heart"></i> 45 likes</span>
+                            <span><i class="fas fa-comment"></i> 9 commentaires</span>
+                        </div>
+                        <a href="article_detail.html" class="read-more">Lire la suite →</a>
+                    </div>
+                </article>
+                
+                <!-- Article 5 -->
+                <article class="article-card" data-category="mobile">
+                    <div class="article-image">
+                        <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Article image">
+                        <span class="article-category">Mobile</span>
+                    </div>
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <div class="article-author">
+                                <div class="author-avatar">SL</div>
+                                <span>Sophie Leroy</span>
+                            </div>
+                            <span>11 mars 2026</span>
+                        </div>
+                        <h2 class="article-title">
+                            <a href="article_detail.html">Flutter vs React Native : Battle 2026</a>
+                        </h2>
+                        <p class="article-excerpt">
+                            Analyse comparative des deux frameworks les plus populaires pour le développement d'applications mobiles...
+                        </p>
+                        <div class="article-footer">
+                            <div class="article-stats">
+                                <span class="article-stat">
+                                    <i class="fas fa-eye"></i>
+                                    2.1k
+                                </span>
+                                <span class="article-stat">
+                                    <i class="fas fa-heart"></i>
+                                    156
+                                </span>
+                                <span class="article-stat">
+                                    <i class="fas fa-comment"></i>
+                                    42
+                                </span>
+                            </div>
+                            <a href="article_detail.html" class="read-more">Lire la suite →</a>
+                        </div>
+                    </div>
+                </article>
+                
+                <!-- Article 6 -->
+                <article class="article-card" data-category="javascript">
+                    <div class="article-image">
+                        <img src="https://images.unsplash.com/photo-1579403124614-197f69d8187b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Article image">
+                        <span class="article-category">JavaScript</span>
+                    </div>
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <div class="article-author">
+                                <div class="author-avatar">NR</div>
+                                <span>Nicolas Robert</span>
+                            </div>
+                            <span>10 mars 2026</span>
+                        </div>
+                        <h2 class="article-title">
+                            <a href="article_detail.html">TypeScript avancé : Patterns et astuces</a>
+                        </h2>
+                        <p class="article-excerpt">
+                            Maîtrisez les concepts avancés de TypeScript et découvrez les patterns pour un code plus robuste...
+                        </p>
+                        <div class="article-footer">
+                            <div class="article-stats">
+                                <span class="article-stat">
+                                    <i class="fas fa-eye"></i>
+                                    1.8k
+                                </span>
+                                <span class="article-stat">
+                                    <i class="fas fa-heart"></i>
+                                    124
+                                </span>
+                                <span class="article-stat">
+                                    <i class="fas fa-comment"></i>
+                                    28
+                                </span>
+                            </div>
+                            <a href="article_detail.html" class="read-more">Lire la suite →</a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+            
+            <!-- Pagination -->
+            <div class="pagination">
+                <button class="pagination-button" disabled>
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="pagination-button active">1</button>
+                <button class="pagination-button">2</button>
+                <button class="pagination-button">3</button>
+                <button class="pagination-button">4</button>
+                <button class="pagination-button">5</button>
+                <button class="pagination-button">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-blog"></i>
+                        <span>BlogInteractif</span>
+                    </div>
+                    <p class="footer-description">
+                        Partagez vos idées, discutez, et interagissez avec une communauté passionnée de développeurs.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 class="footer-title">Navigation</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="about.html">À propos</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="articles.html">Articles</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 class="footer-title">Catégories</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">JavaScript</a></li>
+                        <li><a href="#">Python</a></li>
+                        <li><a href="#">Design</a></li>
+                        <li><a href="#">DevOps</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 class="footer-title">Légal</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Conditions d'utilisation</a></li>
+                        <li><a href="#">Politique de confidentialité</a></li>
+                        <li><a href="#">Mentions légales</a></li>
+                        <li><a href="#">Cookies</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 BlogInteractif. Tous droits réservés.</p>
+                <p>Fait avec <i class="fas fa-heart text-red"></i> par des développeurs passionnés</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Category Filter
+        const categoryItems = document.querySelectorAll('.category-item');
+        const articleCards = document.querySelectorAll('.article-card');
+        
+        categoryItems.forEach(item => {
+            item.addEventListener('click', () => {
+                // Remove active class from all items
+                categoryItems.forEach(cat => cat.classList.remove('active'));
+                // Add active class to clicked item
+                item.classList.add('active');
+                
+                const selectedCategory = item.dataset.category;
+                
+                // Show loading message
+                const loadingMessage = document.createElement('div');
+                loadingMessage.style.cssText = `
+                    position: fixed;
+                    top: 20px;
+                    right: 20px;
+                    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+                    color: white;
+                    padding: 1rem 1.5rem;
+                    border-radius: 8px;
+                    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+                    z-index: 10000;
+                    animation: slideInRight 0.3s ease-out;
+                `;
+                
+                const categoryName = item.querySelector('.category-name').textContent.trim();
+                loadingMessage.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Filtrage par catégorie : ' + categoryName;
+                document.body.appendChild(loadingMessage);
+                
+                // Filter articles
+                articleCards.forEach(card => {
+                    if (selectedCategory === 'all' || card.dataset.category === selectedCategory) {
+                        card.style.display = 'block';
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                            card.style.transform = 'translateY(0)';
+                        }, 100);
+                    } else {
+                        card.style.opacity = '0';
+                        card.style.transform = 'translateY(20px)';
+                        setTimeout(() => {
+                            card.style.display = 'none';
+                        }, 300);
+                    }
+                });
+                
+                // Update loading message
+                setTimeout(() => {
+                    const visibleCards = Array.from(articleCards).filter(card => 
+                        card.style.display !== 'none'
+                    ).length;
+                    
+                    loadingMessage.innerHTML = `<i class="fas fa-check-circle"></i> ${visibleCards} article(s) trouvé(s) dans la catégorie "${categoryName}"`;
+                    setTimeout(() => {
+                        loadingMessage.remove();
+                    }, 2000);
+                }, 500);
+            });
+        });
+        
+        // Search functionality
+        const searchInput = document.getElementById('searchInput');
+        const searchButton = document.querySelector('.search-button');
+        
+        function performSearch() {
+            const searchTerm = searchInput.value.toLowerCase().trim();
+            
+            if (searchTerm === '') {
+                // Reset all articles
+                articleCards.forEach(card => {
+                    card.style.display = 'block';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                });
+                return;
+            }
+            
+            let foundCount = 0;
+            
+            // Search in articles
+            articleCards.forEach(card => {
+                const title = card.querySelector('.article-title').textContent.toLowerCase();
+                const excerpt = card.querySelector('.article-excerpt').textContent.toLowerCase();
+                const category = card.querySelector('.article-category').textContent.toLowerCase();
+                
+                if (title.includes(searchTerm) || excerpt.includes(searchTerm) || category.includes(searchTerm)) {
+                    card.style.display = 'block';
+                    setTimeout(() => {
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    }, foundCount * 100);
+                    foundCount++;
+                } else {
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(20px)';
+                    setTimeout(() => {
+                        card.style.display = 'none';
+                    }, 300);
+                }
+            });
+            
+            // Show search results message
+            const searchMessage = document.createElement('div');
+            searchMessage.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+                color: white;
+                padding: 1rem 1.5rem;
+                border-radius: 8px;
+                box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+                z-index: 10000;
+                animation: slideInRight 0.3s ease-out;
+            `;
+            
+            if (foundCount > 0) {
+                searchMessage.innerHTML = `<i class="fas fa-search"></i> ${foundCount} article(s) trouvé(s) pour "${searchTerm}"`;
+            } else {
+                searchMessage.innerHTML = `<i class="fas fa-search"></i> Aucun article trouvé pour "${searchTerm}"`;
+                searchMessage.style.background = 'linear-gradient(135deg, #e74c3c, #c0392b)';
+            }
+            
+            document.body.appendChild(searchMessage);
+            
+            setTimeout(() => {
+                searchMessage.remove();
+            }, 3000);
+        }
+        
+        if (searchButton) {
+            searchButton.addEventListener('click', performSearch);
+        }
+        
+        if (searchInput) {
+            searchInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    performSearch();
+                }
+            });
+            
+            // Real-time search
+            searchInput.addEventListener('input', () => {
+                if (searchInput.value.length > 2) {
+                    performSearch();
+                } else if (searchInput.value.length === 0) {
+                    // Reset all articles
+                    articleCards.forEach(card => {
+                        card.style.display = 'block';
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    });
+                }
+            });
+        }
+        
+        // Tag functionality
+        const tags = document.querySelectorAll('.tag');
+        
+        tags.forEach(tag => {
+            tag.addEventListener('click', () => {
+                searchInput.value = tag.textContent;
+                performSearch();
+            });
+        });
+        
+        // Pagination
+        const paginationButtons = document.querySelectorAll('.pagination-button');
+        let currentPage = 1;
+        const articlesPerPage = 3;
+        const allArticles = Array.from(document.querySelectorAll('.article-card'));
+        
+        function showPage(pageNum) {
+            const startIndex = (pageNum - 1) * articlesPerPage;
+            const endIndex = startIndex + articlesPerPage;
+            
+            // Hide all articles
+            allArticles.forEach(article => {
+                article.style.display = 'none';
+                article.style.opacity = '0';
+                article.style.transform = 'translateY(20px)';
+            });
+            
+            // Show articles for current page
+            const visibleArticles = allArticles.slice(startIndex, endIndex);
+            visibleArticles.forEach((article, index) => {
+                setTimeout(() => {
+                    article.style.display = 'block';
+                    setTimeout(() => {
+                        article.style.opacity = '1';
+                        article.style.transform = 'translateY(0)';
+                    }, 50);
+                }, index * 100);
+            });
+            
+            // Update pagination buttons
+            paginationButtons.forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.textContent.trim() == pageNum.toString()) {
+                    btn.classList.add('active');
+                }
+            });
+            
+            // Enable/disable prev/next buttons
+            const prevBtn = paginationButtons[0];
+            const nextBtn = paginationButtons[paginationButtons.length - 1];
+            
+            prevBtn.disabled = pageNum === 1;
+            nextBtn.disabled = pageNum === Math.ceil(allArticles.length / articlesPerPage);
+        }
+        
+        paginationButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                if (!button.disabled) {
+                    let pageNum;
+                    
+                    // Check if it's a number button
+                    if (!isNaN(parseInt(button.textContent.trim()))) {
+                        pageNum = parseInt(button.textContent.trim());
+                    } 
+                    // Check if it's previous button
+                    else if (button.querySelector('.fa-chevron-left')) {
+                        pageNum = currentPage - 1;
+                    } 
+                    // Check if it's next button
+                    else if (button.querySelector('.fa-chevron-right')) {
+                        pageNum = currentPage + 1;
+                    } 
+                    // Default case
+                    else {
+                        pageNum = currentPage;
+                    }
+                    
+                    if (pageNum > 0 && pageNum <= Math.ceil(allArticles.length / articlesPerPage)) {
+                        currentPage = pageNum;
+                        
+                        // Show loading message
+                        const loadingMessage = document.createElement('div');
+                        loadingMessage.style.cssText = `
+                            position: fixed;
+                            top: 20px;
+                            right: 20px;
+                            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+                            color: white;
+                            padding: 1rem 1.5rem;
+                            border-radius: 8px;
+                            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+                            z-index: 10000;
+                            animation: slideInRight 0.3s ease-out;
+                        `;
+                        loadingMessage.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Chargement de la page ' + pageNum + '...';
+                        document.body.appendChild(loadingMessage);
+                        
+                        // Load page
+                        showPage(pageNum);
+                        
+                        // Update loading message
+                        setTimeout(() => {
+                            loadingMessage.innerHTML = '<i class="fas fa-check-circle"></i> Page ' + pageNum + ' chargée avec succès!';
+                            setTimeout(() => {
+                                loadingMessage.remove();
+                            }, 2000);
+                        }, 500);
+                    }
+                }
+            });
+        });
+        
+        // Initialize page 1
+        showPage(1);
+        
+        // Category Filter - using existing variables
+        categoryItems.forEach(item => {
+            item.addEventListener('click', () => {
+                // Remove active class from all items
+                categoryItems.forEach(cat => cat.classList.remove('active'));
+                // Add active class to clicked item
+                item.classList.add('active');
+                
+                const selectedCategory = item.dataset.category;
+                
+                // Show loading message
+                const loadingMessage = document.createElement('div');
+                loadingMessage.style.cssText = `
+                    position: fixed;
+                    top: 20px;
+                    right: 20px;
+                    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+                    color: white;
+                    padding: 1rem 1.5rem;
+                    border-radius: 8px;
+                    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+                    z-index: 10000;
+                    animation: slideInRight 0.3s ease-out;
+                `;
+                
+                const categoryName = item.querySelector('.category-name').textContent.trim();
+                loadingMessage.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Filtrage par catégorie : ' + categoryName;
+                document.body.appendChild(loadingMessage);
+                
+                // Filter articles with animation
+                let visibleCount = 0;
+                articleCards.forEach(card => {
+                    if (selectedCategory === 'all' || card.dataset.category === selectedCategory) {
+                        card.style.display = 'block';
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                            card.style.transform = 'translateY(0)';
+                        }, visibleCount * 100);
+                        visibleCount++;
+                    } else {
+                        card.style.opacity = '0';
+                        card.style.transform = 'translateY(20px)';
+                        setTimeout(() => {
+                            card.style.display = 'none';
+                        }, 300);
+                    }
+                });
+                
+                // Update loading message
+                setTimeout(() => {
+                    loadingMessage.innerHTML = `<i class="fas fa-check-circle"></i> ${visibleCount} article(s) trouvé(s) dans la catégorie "${categoryName}"`;
+                    setTimeout(() => {
+                        loadingMessage.remove();
+                    }, 2000);
+                }, 500);
+            });
+        });
+    </script>
+</body>
+</html>

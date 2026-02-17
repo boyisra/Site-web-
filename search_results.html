@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Résultats de recherche - Groupe La Passerelle</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="icon.ico">
+    <style>
+        .search-hero {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+        }
+        
+        .search-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .search-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .search-header h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: var(--dark-color);
+        }
+        
+        .search-header p {
+            color: var(--gray-color);
+            font-size: 1.125rem;
+        }
+        
+        .search-box {
+            max-width: 800px;
+            margin: 0 auto 3rem;
+        }
+        
+        .search-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .search-input-container {
+            display: flex;
+            background: white;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+            overflow: hidden;
+        }
+        
+        .search-input-container i {
+            padding: 1rem 1.5rem;
+            color: var(--gray-color);
+            font-size: 1.25rem;
+        }
+        
+        .search-input {
+            flex: 1;
+            border: none;
+            padding: 1rem 1.5rem 1rem 0;
+            font-size: 1.125rem;
+            outline: none;
+        }
+        
+        .btn-search {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .btn-search:hover {
+            background: var(--secondary-color);
+        }
+        
+        .search-filters {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            background: white;
+            padding: 1.5rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        
+        .filter-group label {
+            font-weight: 600;
+            color: var(--dark-color);
+            font-size: 0.875rem;
+        }
+        
+        .filter-group select {
+            padding: 0.75rem;
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            background: white;
+            font-size: 0.875rem;
+        }
+        
+        .results-container {
+            margin-top: 3rem;
+        }
+        
+        .result-item {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+        }
+        
+        .result-item:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .result-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 1rem;
+        }
+        
+        .result-type {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: var(--primary-color);
+            color: white;
+            border-radius: var(--radius-sm);
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+        
+        .result-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--dark-color);
+            margin: 0;
+        }
+        
+        .result-title a {
+            color: inherit;
+            text-decoration: none;
+        }
+        
+        .result-title a:hover {
+            color: var(--primary-color);
+        }
+        
+        .result-excerpt {
+            color: var(--dark-color);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        
+        .result-meta {
+            display: flex;
+            gap: 2rem;
+            font-size: 0.875rem;
+            color: var(--gray-color);
+        }
+        
+        .result-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .highlight {
+            background: rgba(102, 126, 234, 0.2);
+            padding: 0.25rem 0.5rem;
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+        }
+        
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 3rem;
+        }
+        
+        .page-btn {
+            padding: 0.75rem 1rem;
+            border: 1px solid var(--border-color);
+            background: white;
+            color: var(--dark-color);
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .page-btn:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+        
+        .page-btn.active {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+        
+        @media (max-width: 768px) {
+            .search-filters {
+                grid-template-columns: 1fr;
+            }
+            
+            .result-header {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-network-wired"></i>
+                <span>Groupe La Passerelle</span>
+            </a>
+            
+            <div class="nav-links">
+                <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Accueil</a>
+                <a href="about.html" class="nav-link"><i class="fas fa-info-circle"></i> À propos</a>
+                <a href="contact.html" class="nav-link"><i class="fas fa-envelope"></i> Contact</a>
+                <a href="articles.html" class="nav-link"><i class="fas fa-newspaper"></i> Articles</a>
+                <a href="profile.html" class="nav-link"><i class="fas fa-user"></i> Profil</a>
+                <a href="article_form.html" class="nav-link"><i class="fas fa-edit"></i> Rédiger</a>
+                <a href="search_results.html" class="nav-link active"><i class="fas fa-search"></i> Recherche</a>
+                <a href="article_detail.html" class="nav-link"><i class="fas fa-file-alt"></i> Détail</a>
+                <a href="login.html" class="btn btn-outline"><i class="fas fa-sign-in-alt"></i> Connexion</a>
+                <a href="register.html" class="btn btn-primary"><i class="fas fa-user-plus"></i> Inscription</a>
+            </div>
+            
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Search Hero Section -->
+    <section class="search-hero">
+        <div class="search-container">
+            <div class="search-header">
+                <h1>Résultats de recherche</h1>
+                <p>235 résultats trouvés pour "Django"</p>
+            </div>
+            
+            <div class="search-box">
+                <form class="search-form">
+                    <div class="search-input-container">
+                        <i class="fas fa-search"></i>
+                        <input type="text" class="search-input" placeholder="Rechercher des articles, auteurs, commentaires..." value="Django">
+                        <button type="submit" class="btn-search">
+                            <i class="fas fa-search"></i>
+                            Rechercher
+                        </button>
+                    </div>
+                    
+                    <!-- Filtres de recherche -->
+                    <div class="search-filters">
+                        <div class="filter-group">
+                            <label for="searchType">Rechercher dans :</label>
+                            <select id="searchType">
+                                <option value="all">Tout</option>
+                                <option value="articles">Articles</option>
+                                <option value="comments">Commentaires</option>
+                                <option value="users">Utilisateurs</option>
+                                <option value="tags">Mots-clés</option>
+                            </select>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <label for="sortBy">Trier par :</label>
+                            <select id="sortBy">
+                                <option value="relevance">Pertinence</option>
+                                <option value="date_desc">Plus récent</option>
+                                <option value="date_asc">Plus ancien</option>
+                                <option value="popularity">Plus populaire</option>
+                            </select>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <label for="timeRange">Période :</label>
+                            <select id="timeRange">
+                                <option value="all">Tout le temps</option>
+                                <option value="day">Dernier jour</option>
+                                <option value="week">Dernière semaine</option>
+                                <option value="month">Dernier mois</option>
+                                <option value="year">Dernière année</option>
+                            </select>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            
+            <div class="results-container">
+                <!-- Résultat 1 -->
+                <div class="result-item">
+                    <div class="result-header">
+                        <span class="result-type">
+                            <i class="fas fa-newspaper"></i>
+                            Article
+                        </span>
+                        <h3 class="result-title">
+                            <a href="article_detail.html">L'avenir de l'IA dans le développement web avec <span class="highlight">Django</span></a>
+                        </h3>
+                    </div>
+                    <p class="result-excerpt">
+                        Exploration des tendances actuelles et futures de l'intelligence artificielle dans 
+                        le développement d'applications web avec le framework <span class="highlight">Django</span>. 
+                        Découvrez comment les outils d'IA peuvent améliorer votre productivité...
+                    </p>
+                    <div class="result-meta">
+                        <span><i class="fas fa-user"></i> Marie Dubois</span>
+                        <span><i class="far fa-calendar"></i> 15/01/2026</span>
+                        <span><i class="fas fa-eye"></i> 1,245 vues</span>
+                        <span><i class="fas fa-heart"></i> 42 likes</span>
+                    </div>
+                </div>
+                
+                <!-- Résultat 2 -->
+                <div class="result-item">
+                    <div class="result-header">
+                        <span class="result-type">
+                            <i class="fas fa-newspaper"></i>
+                            Article
+                        </span>
+                        <h3 class="result-title">
+                            <a href="article_detail.html">Les meilleures pratiques <span class="highlight">Django</span> en 2026</a>
+                        </h3>
+                    </div>
+                    <p class="result-excerpt">
+                        Guide complet des meilleures pratiques pour développer des applications 
+                        <span class="highlight">Django</span> modernes et performantes. Couvre l'architecture, 
+                        la sécurité, les performances et les tests...
+                    </p>
+                    <div class="result-meta">
+                        <span><i class="fas fa-user"></i> Thomas Bernard</span>
+                        <span><i class="far fa-calendar"></i> 10/01/2026</span>
+                        <span><i class="fas fa-eye"></i> 892 vues</span>
+                        <span><i class="fas fa-heart"></i> 31 likes</span>
+                    </div>
+                </div>
+                
+                <!-- Résultat 3 -->
+                <div class="result-item">
+                    <div class="result-header">
+                        <span class="result-type">
+                            <i class="fas fa-comment"></i>
+                            Commentaire
+                        </span>
+                        <h3 class="result-title">
+                            <a href="article_detail.html">Commentaire sur "L'avenir de l'IA dans le développement web"</a>
+                        </h3>
+                    </div>
+                    <p class="result-excerpt">
+                        Je suis entièrement d'accord avec votre analyse. L'IA va fondamentalement 
+                        changer notre façon de travailler avec <span class="highlight">Django</span>, mais je pense 
+                        que le rôle du développeur restera essentiel pour la conception et l'architecture...
+                    </p>
+                    <div class="result-meta">
+                        <span><i class="fas fa-user"></i> Jean Martin</span>
+                        <span><i class="far fa-calendar"></i> 15/01/2026 - 14:30</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Pagination -->
+            <div class="pagination">
+                <button class="page-btn disabled">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="page-btn active">1</button>
+                <button class="page-btn">2</button>
+                <button class="page-btn">3</button>
+                <button class="page-btn">4</button>
+                <button class="page-btn">5</button>
+                <button class="page-btn">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Explorer par catégories</h2>
+                <p class="section-subtitle">Découvrez les articles par thématiques</p>
+            </div>
+            
+            <div class="categories-grid" id="categoriesGrid">
+                <div class="category-card" data-category="javascript">
+                    <div class="category-icon">
+                        <i class="fab fa-js"></i>
+                    </div>
+                    <h3>JavaScript</h3>
+                    <p>145 articles</p>
+                    <span class="category-arrow">
+                        <i class="fas fa-arrow-right"></i>
+                    </span>
+                </div>
+                
+                <div class="category-card" data-category="python">
+                    <div class="category-icon">
+                        <i class="fab fa-python"></i>
+                    </div>
+                    <h3>Python</h3>
+                    <p>98 articles</p>
+                    <span class="category-arrow">
+                        <i class="fas fa-arrow-right"></i>
+                    </span>
+                </div>
+                
+                <div class="category-card" data-category="react">
+                    <div class="category-icon">
+                        <i class="fab fa-react"></i>
+                    </div>
+                    <h3>React</h3>
+                    <p>76 articles</p>
+                    <span class="category-arrow">
+                        <i class="fas fa-arrow-right"></i>
+                    </span>
+                </div>
+                
+                <div class="category-card" data-category="design">
+                    <div class="category-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3>Design</h3>
+                    <p>52 articles</p>
+                    <span class="category-arrow">
+                        <i class="fas fa-arrow-right"></i>
+                    </span>
+                </div>
+                
+                <div class="category-card" data-category="devops">
+                    <div class="category-icon">
+                        <i class="fab fa-docker"></i>
+                    </div>
+                    <h3>DevOps</h3>
+                    <p>64 articles</p>
+                    <span class="category-arrow">
+                        <i class="fas fa-arrow-right"></i>
+                    </span>
+                </div>
+                
+                <div class="category-card" data-category="ia">
+                    <div class="category-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>Intelligence Artificielle</h3>
+                    <p>89 articles</p>
+                    <span class="category-arrow">
+                        <i class="fas fa-arrow-right"></i>
+                    </span>
+                </div>
+                
+                <div class="category-card" data-category="security">
+                    <div class="category-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Sécurité</h3>
+                    <p>41 articles</p>
+                    <span class="category-arrow">
+                        <i class="fas fa-arrow-right"></i>
+                    </span>
+                </div>
+                
+                <div class="category-card" data-category="mobile">
+                    <div class="category-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Mobile</h3>
+                    <p>58 articles</p>
+                    <span class="category-arrow">
+                        <i class="fas fa-arrow-right"></i>
+                    </span>
+                </div>
+            </div>
+            
+            <!-- Category Results (Hidden by default) -->
+            <div class="category-results" id="categoryResults" style="display: none;">
+                <div class="category-header">
+                    <h3 id="categoryTitle">Articles de la catégorie</h3>
+                    <button class="btn btn-outline" onclick="closeCategoryResults()">
+                        <i class="fas fa-times"></i> Fermer
+                    </button>
+                </div>
+                <div class="category-articles" id="categoryArticles">
+                    <!-- Articles will be loaded here dynamically -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-network-wired"></i>
+                        <span>Groupe La Passerelle</span>
+                    </div>
+                    <p class="footer-description">
+                        Groupe La Passerelle est une entreprise de services du numérique (ESN). Elle souhaite lancer son site internet pour promouvoir ses expertises techniques auprès de clients professionnels.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 class="footer-title">Navigation</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="about.html">À propos</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="articles.html">Articles</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 class="footer-title">Catégories</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">JavaScript</a></li>
+                        <li><a href="#">Python</a></li>
+                        <li><a href="#">Design</a></li>
+                        <li><a href="#">DevOps</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 class="footer-title">Légal</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Conditions d'utilisation</a></li>
+                        <li><a href="#">Politique de confidentialité</a></li>
+                        <li><a href="#">Mentions légales</a></li>
+                        <li><a href="#">Cookies</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 Groupe La Passerelle. Tous droits réservés.</p>
+                <p>ESN - Entreprise de Services du Numérique</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Search functionality
+        document.querySelector('.search-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const searchValue = document.querySelector('.search-input').value;
+            alert(`Recherche pour : ${searchValue}`);
+        });
+        
+        // Filter functionality
+        document.querySelectorAll('.filter-group select').forEach(select => {
+            select.addEventListener('change', () => {
+                alert('Filtre appliqué');
+            });
+        });
+        
+        // Pagination - Correction pour tous les boutons
+        document.querySelectorAll('.page-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                if (!btn.classList.contains('disabled')) {
+                    // Retirer la classe active de tous les boutons
+                    document.querySelectorAll('.page-btn').forEach(b => b.classList.remove('active'));
+                    // Ajouter la classe active au bouton cliqué
+                    btn.classList.add('active');
+                    
+                    // Afficher le numéro de page
+                    const pageNumber = btn.textContent.trim();
+                    if (pageNumber && !isNaN(pageNumber)) {
+                        alert(`Page ${pageNumber} chargée`);
+                        // Ici vous pouvez ajouter la logique pour charger le contenu de la page
+                        loadPageContent(pageNumber);
+                    } else if (btn.querySelector('.fa-chevron-left')) {
+                        alert('Page précédente');
+                    } else if (btn.querySelector('.fa-chevron-right')) {
+                        alert('Page suivante');
+                    }
+                }
+            });
+        });
+        
+        // Fonction pour charger le contenu d'une page
+        function loadPageContent(pageNumber) {
+            console.log(`Chargement de la page ${pageNumber}`);
+            // Logique pour charger les résultats de la page spécifiée
+            // Vous pouvez faire un appel AJAX ou modifier le contenu existant
+        }
+        
+        // Categories functionality
+        const categoryData = {
+            javascript: [
+                { title: "Les meilleures pratiques JavaScript en 2026", excerpt: "Découvrez les techniques modernes pour écrire du code JavaScript propre et performant.", author: "Jean Dupont", date: "15/01/2026", image: "https://images.unsplash.com/photo-1627398242455-78a9f3b5b5b3?w=120&h=80&fit=crop" },
+                { title: "Async/Await : Guide complet", excerpt: "Maîtrisez la programmation asynchrone en JavaScript avec les promesses.", author: "Marie Martin", date: "14/01/2026", image: "https://images.unsplash.com/photo-1579468118864-1b9ea3c0db4a?w=120&h=80&fit=crop" },
+                { title: "ES6+ : Les fonctionnalités essentielles", excerpt: "Explorez les dernières fonctionnalités d'ECMAScript et comment les utiliser.", author: "Thomas Bernard", date: "13/01/2026", image: "https://images.unsplash.com/photo-1516116216624-53e697fedbea?w=120&h=80&fit=crop" }
+            ],
+            python: [
+                { title: "Python pour la data science", excerpt: "Utilisez Python pour analyser et visualiser des données complexes.", author: "Sophie Laurent", date: "12/01/2026", image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=120&h=80&fit=crop" },
+                { title: "Django : Créer des applications web", excerpt: "Guide complet pour développer des applications web avec Django.", author: "Pierre Dubois", date: "11/01/2026", image: "https://images.unsplash.com/photo-1526379095098-d400fd0bf935?w=120&h=80&fit=crop" }
+            ],
+            react: [
+                { title: "React Hooks : Guide pratique", excerpt: "Maîtrisez les Hooks React pour créer des composants modernes.", author: "Alex Petit", date: "10/01/2026", image: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=120&h=80&fit=crop" },
+                { title: "Next.js : Développement full-stack", excerpt: "Créez des applications web performantes avec Next.js.", author: "Claire Martin", date: "09/01/2026", image: "https://images.unsplash.com/photo-1542831371-29b0f74f9713?w=120&h=80&fit=crop" }
+            ],
+            design: [
+                { title: "UI/UX : Les principes fondamentaux", excerpt: "Découvrez les bases du design d'interface et de l'expérience utilisateur.", author: "Isabelle Dubois", date: "08/01/2026", image: "https://images.unsplash.com/photo-1559028012-cda1db361bc8?w=120&h=80&fit=crop" },
+                { title: "Figma : Guide pour débutants", excerpt: "Apprenez à utiliser Figma pour créer des maquettes professionnelles.", author: "Lucas Bernard", date: "07/01/2026", image: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=120&h=80&fit=crop" }
+            ],
+            devops: [
+                { title: "Docker : Conteneurisation simplifiée", excerpt: "Apprenez à utiliser Docker pour déployer vos applications.", author: "Nicolas Petit", date: "06/01/2026", image: "https://images.unsplash.com/photo-1603891166306-2e2fedb6b7f7?w=120&h=80&fit=crop" },
+                { title: "Kubernetes : Orchestration avancée", excerpt: "Maîtrisez Kubernetes pour gérer vos conteneurs à grande échelle.", author: "François Martin", date: "05/01/2026", image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=120&h=80&fit=crop" }
+            ],
+            ia: [
+                { title: "Machine Learning avec Python", excerpt: "Introduction au machine learning et à ses applications pratiques.", author: "Julie Laurent", date: "04/01/2026", image: "https://images.unsplash.com/photo-1555255701-c5795602729a?w=120&h=80&fit=crop" },
+                { title: "Réseaux de neurones : Guide complet", excerpt: "Comprendre et implémenter des réseaux de neurones artificiels.", author: "David Dubois", date: "03/01/2026", image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=120&h=80&fit=crop" }
+            ],
+            security: [
+                { title: "Sécurité web : Meilleures pratiques", excerpt: "Protégez vos applications contre les vulnérabilités courantes.", author: "Marc Bernard", date: "02/01/2026", image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=120&h=80&fit=crop" },
+                { title: "Cryptographie : Les bases", excerpt: "Comprendre les principes fondamentaux de la cryptographie.", author: "Sébastien Petit", date: "01/01/2026", image: "https://images.unsplash.com/photo-1633412802994-5c058f51b8d7?w=120&h=80&fit=crop" }
+            ],
+            mobile: [
+                { title: "React Native : Applications multiplateformes", excerpt: "Créez des applications mobiles pour iOS et Android avec React Native.", author: "Antoine Martin", date: "31/12/2025", image: "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=120&h=80&fit=crop" },
+                { title: "Flutter : Le guide complet", excerpt: "Développez des applications mobiles performantes avec Flutter.", author: "Camille Dubois", date: "30/12/2025", image: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=120&h=80&fit=crop" }
+            ]
+        };
+        
+        // Category cards click handlers
+        document.querySelectorAll('.category-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const category = this.getAttribute('data-category');
+                showCategoryResults(category);
+            });
+        });
+        
+        function showCategoryResults(category) {
+            const categoryResults = document.getElementById('categoryResults');
+            const categoryTitle = document.getElementById('categoryTitle');
+            const categoryArticles = document.getElementById('categoryArticles');
+            
+            // Update title
+            const categoryNames = {
+                javascript: 'JavaScript',
+                python: 'Python',
+                react: 'React',
+                design: 'Design',
+                devops: 'DevOps',
+                ia: 'Intelligence Artificielle',
+                security: 'Sécurité',
+                mobile: 'Mobile'
+            };
+            
+            categoryTitle.textContent = `Articles de la catégorie : ${categoryNames[category]}`;
+            
+            // Clear and populate articles
+            categoryArticles.innerHTML = '';
+            
+            const articles = categoryData[category] || [];
+            articles.forEach(article => {
+                const articleElement = document.createElement('div');
+                articleElement.className = 'category-article';
+                articleElement.innerHTML = `
+                    <img src="${article.image}" alt="${article.title}" class="category-article-image">
+                    <div class="category-article-content">
+                        <a href="article_detail.html" class="category-article-title">${article.title}</a>
+                        <p class="category-article-excerpt">${article.excerpt}</p>
+                        <div class="category-article-meta">
+                            <span><i class="fas fa-user"></i> ${article.author}</span>
+                            <span><i class="far fa-calendar"></i> ${article.date}</span>
+                        </div>
+                    </div>
+                `;
+                categoryArticles.appendChild(articleElement);
+            });
+            
+            // Show results
+            categoryResults.style.display = 'block';
+            categoryResults.scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        function closeCategoryResults() {
+            document.getElementById('categoryResults').style.display = 'none';
+        }
+    </script>
+</body>
+</html>

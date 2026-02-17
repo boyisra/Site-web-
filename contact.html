@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Groupe La Passerelle - Contact</title>
+    <link rel="icon" href="static/images/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .contact-hero {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, rgba(124, 58, 237, 0.1) 100%);
+        }
+        
+        .contact-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .contact-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .contact-header h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: #ffffff;
+        }
+        
+        .contact-subtitle {
+            font-size: 1.125rem;
+            color: #cbd5e0;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+        
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 4rem;
+            margin-bottom: 4rem;
+        }
+        
+        .contact-info {
+            background: rgba(45, 27, 105, 0.8);
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 3rem;
+            height: fit-content;
+        }
+        
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+            color: #e2e8f0;
+            position: relative;
+            padding-left: 3rem;
+        }
+        
+        .info-item::before {
+            content: attr(data-number);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 2rem;
+            height: 2rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+        
+        .info-item i {
+            color: var(--primary-color);
+            font-size: 1.3rem;
+            width: 24px;
+            flex-shrink: 0;
+            margin-left: 0.5rem;
+        }
+        
+        .info-content h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: #ffffff;
+        }
+        
+        .info-content p {
+            color: #cbd5e0;
+            line-height: 1.6;
+            margin: 0;
+            font-size: 1rem;
+        }
+        
+        .contact-form-container {
+            background: white;
+            padding: 3rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .form-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .form-header h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--dark-color);
+        }
+        
+        .form-header p {
+            color: var(--gray-color);
+        }
+        
+        .contact-form {
+            display: grid;
+            gap: 1.5rem;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .form-group label {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 600;
+            color: var(--dark-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .form-group label i {
+            color: var(--primary-color);
+        }
+        
+        .form-control {
+            padding: 1rem;
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-md);
+            font-size: 1rem;
+            transition: var(--transition);
+            font-family: inherit;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+        
+        .btn-contact {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: var(--radius-md);
+            font-size: 1.125rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+        
+        .btn-contact:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .faq-section {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 4rem 0;
+        }
+        
+        .faq-list {
+            display: grid;
+            gap: 1rem;
+            margin-top: 3rem;
+        }
+        
+        .faq-item {
+            background: white;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .faq-question {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: var(--dark-color);
+            transition: var(--transition);
+        }
+        
+        .faq-question:hover {
+            background: rgba(102, 126, 234, 0.05);
+        }
+        
+        .faq-answer {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+        
+        .faq-answer p {
+            padding: 1rem 0;
+            color: var(--gray-color);
+            line-height: 1.6;
+        }
+        
+        .faq-item.active .faq-answer {
+            max-height: 200px;
+        }
+        
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+        
+        @media (max-width: 768px) {
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-network-wired"></i>
+                <span>Groupe La Passerelle</span>
+            </a>
+            
+            <div class="nav-links">
+                <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Accueil</a>
+                <a href="about.html" class="nav-link"><i class="fas fa-info-circle"></i> À propos</a>
+                <a href="contact.html" class="nav-link active"><i class="fas fa-envelope"></i> Contact</a>
+                <a href="articles.html" class="nav-link"><i class="fas fa-newspaper"></i> Articles</a>
+                <a href="profile.html" class="nav-link"><i class="fas fa-user"></i> Profil</a>
+                <a href="article_form.html" class="nav-link"><i class="fas fa-edit"></i> Rédiger</a>
+                <a href="search_results.html" class="nav-link"><i class="fas fa-search"></i> Recherche</a>
+                <a href="article_detail.html" class="nav-link"><i class="fas fa-file-alt"></i> Détail</a>
+                
+                <a href="login.html" class="btn btn-outline"><i class="fas fa-sign-in-alt"></i> Connexion</a>
+                <a href="register.html" class="btn btn-primary"><i class="fas fa-user-plus"></i> Inscription</a>
+            </div>
+            
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Contact Hero Section -->
+    <section class="contact-hero">
+        <div class="contact-container">
+            <div class="contact-header">
+                <h1>Contactez-nous</h1>
+                <p class="contact-subtitle">
+                    Nous sommes là pour répondre à toutes vos questions. N'hésitez pas à nous contacter, 
+                    notre équipe vous répondra dans les plus brefs délais.
+                </p>
+            </div>
+            
+            <div class="contact-content">
+                <!-- Contact Information -->
+                <div class="contact-info">
+                    <div class="info-item" data-number="1">
+                        <i class="fas fa-envelope"></i>
+                        <div class="info-content">
+                            <h3>Email</h3>
+                            <p>contact@groupe-lapasserelle.fr</p>
+                            <p>support@groupe-lapasserelle.fr</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item" data-number="2">
+                        <i class="fas fa-phone"></i>
+                        <div class="info-content">
+                            <h3>Téléphone</h3>
+                            <p>+33 1 42 86 53 25</p>
+                            <p>Lundi - Vendredi, 9h-18h</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item" data-number="3">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div class="info-content">
+                            <h3>Adresse</h3>
+                            <p>123 Avenue des Champs-Élysées</p>
+                            <p>75008 Paris, France</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item" data-number="4">
+                        <i class="fas fa-clock"></i>
+                        <div class="info-content">
+                            <h3>Horaires</h3>
+                            <p>Lundi - Vendredi: 9h-18h</p>
+                            <p>Samedi: 10h-16h</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Contact Form -->
+                <div class="contact-form-container">
+                    <div class="form-header">
+                        <h2>Envoyez-nous un message</h2>
+                        <p>Remplissez le formulaire ci-dessous et nous vous répondrons dans les 24 heures.</p>
+                    </div>
+                    
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">
+                                    <i class="fas fa-user"></i>
+                                    Nom complet *
+                                </label>
+                                <input type="text" id="name" name="name" class="form-control" placeholder="Votre nom" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email">
+                                    <i class="fas fa-envelope"></i>
+                                    Adresse email *
+                                </label>
+                                <input type="email" id="email" name="email" class="form-control" placeholder="votre@email.com" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject">
+                                <i class="fas fa-tag"></i>
+                                Sujet *
+                            </label>
+                            <select id="subject" name="subject" class="form-control" required>
+                                <option value="" disabled selected>Sélectionnez un sujet</option>
+                                <option value="support">Support technique</option>
+                                <option value="bug">Signaler un bug</option>
+                                <option value="suggestion">Suggestion d'amélioration</option>
+                                <option value="partnership">Partenariat</option>
+                                <option value="other">Autre</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">
+                                <i class="fas fa-comment"></i>
+                                Message *
+                            </label>
+                            <textarea id="message" name="message" class="form-control" rows="6" placeholder="Décrivez votre demande en détail..." required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn-contact">
+                            <i class="fas fa-paper-plane"></i>
+                            Envoyer le message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Questions fréquentes</h2>
+                <p class="section-subtitle">Consultez notre FAQ pour trouver rapidement une réponse à votre question.</p>
+            </div>
+            
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Comment créer un compte ?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Cliquez sur le bouton "S'inscrire" en haut à droite de la page, remplissez le formulaire 
+                        avec vos informations et validez votre email. C'est gratuit et ne prend que quelques minutes.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Comment publier un article ?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Une fois connecté, cliquez sur "Nouvel article" dans le menu. Rédigez votre article, 
+                        ajoutez une image de couverture et cliquez sur "Publier". Votre article sera visible 
+                        après validation par notre équipe de modération.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Comment modifier ou supprimer mon article ?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Rendez-vous sur votre profil dans l'onglet "Mes articles". Cliquez sur les icônes 
+                        d'édition ou de suppression à côté de l'article que vous souhaitez modifier ou supprimer.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Comment contacter un autre membre ?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Vous pouvez laisser un commentaire sous ses articles ou lui répondre dans les 
+                        commentaires existants. Pour des messages privés, utilisez le système de messagerie 
+                        interne depuis le profil de l'utilisateur.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Mon compte a été suspendu, que faire ?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Les suspensions sont généralement dues à une violation de nos conditions d'utilisation. 
+                        Contactez notre équipe de support via ce formulaire en précisant votre nom d'utilisateur 
+                        et nous examinerons votre cas.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-blog"></i>
+                        <span>BlogInteractif</span>
+                    </div>
+                    <p class="footer-description">
+                        Partagez vos idées, discutez, et interagissez avec une communauté passionnée de développeurs.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 class="footer-title">Navigation</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="about.html">À propos</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="articles.html">Articles</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 class="footer-title">Catégories</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">JavaScript</a></li>
+                        <li><a href="#">Python</a></li>
+                        <li><a href="#">Design</a></li>
+                        <li><a href="#">DevOps</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 class="footer-title">Légal</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Conditions d'utilisation</a></li>
+                        <li><a href="#">Politique de confidentialité</a></li>
+                        <li><a href="#">Mentions légales</a></li>
+                        <li><a href="#">Cookies</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 BlogInteractif. Tous droits réservés.</p>
+                <p>Fait avec <i class="fas fa-heart text-red"></i> par des développeurs passionnés</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // FAQ Toggle
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const faqItem = question.parentElement;
+                faqItem.classList.toggle('active');
+            });
+        });
+
+        // Contact Form
+        document.getElementById('contactForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Simulate form submission
+            const button = e.target.querySelector('.btn-contact');
+            const originalText = button.innerHTML;
+            button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Envoi en cours...';
+            button.disabled = true;
+            
+            setTimeout(() => {
+                button.innerHTML = '<i class="fas fa-check"></i> Message envoyé !';
+                button.style.background = 'linear-gradient(135deg, #48bb78, #38a169)';
+                
+                setTimeout(() => {
+                    e.target.reset();
+                    button.innerHTML = originalText;
+                    button.disabled = false;
+                    button.style.background = '';
+                }, 3000);
+            }, 2000);
+        });
+    </script>
+</body>
+</html>

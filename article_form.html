@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Groupe La Passerelle - Rédiger un article</title>
+    <link rel="icon" href="logo1.jpg"/>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="icon.ico">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-network-wired"></i>
+                <span>Groupe La Passerelle</span>
+            </a>
+            
+            <div class="nav-links">
+                <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Accueil</a>
+                <a href="about.html" class="nav-link"><i class="fas fa-info-circle"></i> À propos</a>
+                <a href="contact.html" class="nav-link"><i class="fas fa-envelope"></i> Contact</a>
+                <a href="articles.html" class="nav-link"><i class="fas fa-newspaper"></i> Articles</a>
+                <a href="profile.html" class="nav-link"><i class="fas fa-user"></i> Profil</a>
+                <a href="article_form.html" class="nav-link active"><i class="fas fa-edit"></i> Rédiger</a>
+                <a href="search_results.html" class="nav-link"><i class="fas fa-search"></i> Recherche</a>
+                <a href="article_detail.html" class="nav-link"><i class="fas fa-file-alt"></i> Détail</a>
+                <a href="login.html" class="btn btn-outline"><i class="fas fa-sign-in-alt"></i> Connexion</a>
+                <a href="register.html" class="btn btn-primary"><i class="fas fa-user-plus"></i> Inscription</a>
+            </div>
+            
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Form Hero Section -->
+    <section class="form-hero">
+        <div class="form-hero-container">
+            <div class="form-hero-content">
+                <h1>Créer un nouvel article</h1>
+                <p>Partagez vos idées avec notre communauté passionnée</p>
+            </div>
+            <div class="form-hero-image">
+                <i class="fas fa-pen-fancy"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- Article Form Section -->
+    <section class="article-form-section">
+        <div class="form-container">
+            <form id="articleForm" onsubmit="handleArticleSubmit(event)">
+                <!-- Basic Information -->
+                <div class="form-section">
+                    <h2>Informations de base</h2>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="title">
+                                <i class="fas fa-heading"></i>
+                                Titre de l'article *
+                            </label>
+                            <input type="text" id="title" name="title" required placeholder="Entrez un titre accrocheur...">
+                            <div class="char-counter">
+                                <span id="titleCounter">0</span>/100
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="category">
+                                <i class="fas fa-tag"></i>
+                                Catégorie *
+                            </label>
+                            <select id="category" name="category" required>
+                                <option value="">Sélectionnez une catégorie</option>
+                                <option value="javascript">JavaScript</option>
+                                <option value="python">Python</option>
+                                <option value="react">React</option>
+                                <option value="design">Design</option>
+                                <option value="devops">DevOps</option>
+                                <option value="ia">Intelligence Artificielle</option>
+                                <option value="security">Sécurité</option>
+                                <option value="mobile">Mobile</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="excerpt">
+                            <i class="fas fa-align-left"></i>
+                            Résumé *
+                        </label>
+                        <textarea id="excerpt" name="excerpt" required placeholder="Décrivez votre article en quelques phrases..." maxlength="300"></textarea>
+                        <div class="char-counter">
+                            <span id="excerptCounter">0</span>/300
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cover Image -->
+                <div class="form-section">
+                    <h2>Image de couverture</h2>
+                    <div class="form-group">
+                        <label for="coverImage">
+                            <i class="fas fa-image"></i>
+                            URL de l'image de couverture
+                        </label>
+                        <input type="url" id="coverImage" name="coverImage" placeholder="https://example.com/image.jpg">
+                        <div class="image-preview" id="imagePreview" style="display: none;">
+                            <img src="" alt="Aperçu" id="previewImg">
+                            <button type="button" class="btn-remove" onclick="removeImage()">
+                                <i class="fas fa-times"></i> Supprimer
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Content Editor -->
+                <div class="form-section">
+                    <h2>Contenu de l'article</h2>
+                    <div class="form-group">
+                        <label for="content">
+                            <i class="fas fa-file-alt"></i>
+                            Contenu *
+                        </label>
+                        <div class="editor-toolbar">
+                            <button type="button" class="editor-btn" onclick="formatText('bold')">
+                                <i class="fas fa-bold"></i>
+                            </button>
+                            <button type="button" class="editor-btn" onclick="formatText('italic')">
+                                <i class="fas fa-italic"></i>
+                            </button>
+                            <button type="button" class="editor-btn" onclick="formatText('underline')">
+                                <i class="fas fa-underline"></i>
+                            </button>
+                            <button type="button" class="editor-btn" onclick="insertHeading()">
+                                <i class="fas fa-heading"></i>
+                            </button>
+                            <button type="button" class="editor-btn" onclick="insertLink()">
+                                <i class="fas fa-link"></i>
+                            </button>
+                            <button type="button" class="editor-btn" onclick="insertList()">
+                                <i class="fas fa-list"></i>
+                            </button>
+                            <button type="button" class="editor-btn" onclick="insertQuote()">
+                                <i class="fas fa-quote-left"></i>
+                            </button>
+                        </div>
+                        <textarea id="content" name="content" required placeholder="Rédigez votre article ici..." rows="15"></textarea>
+                        <div class="char-counter">
+                            <span id="contentCounter">0</span> caractères
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SEO Settings -->
+                <div class="form-section">
+                    <h2>Paramètres SEO</h2>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="seoTitle">
+                                <i class="fas fa-search"></i>
+                                Titre SEO
+                            </label>
+                            <input type="text" id="seoTitle" name="seoTitle" placeholder="Titre pour les moteurs de recherche (60 caractères max)" maxlength="60">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="seoDescription">
+                                <i class="fas fa-search"></i>
+                                Description SEO
+                            </label>
+                            <input type="text" id="seoDescription" name="seoDescription" placeholder="Description pour les moteurs de recherche (160 caractères max)" maxlength="160">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="tags">
+                            <i class="fas fa-tags"></i>
+                            Mots-clés
+                        </label>
+                        <input type="text" id="tags" name="tags" placeholder="javascript, react, développement web (séparez par des virgules)">
+                        <small>Séparez les mots-clés par des virgules</small>
+                    </div>
+                </div>
+
+                <!-- Publication Settings -->
+                <div class="form-section">
+                    <h2>Paramètres de publication</h2>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="publishDate">
+                                <i class="fas fa-calendar"></i>
+                                Date de publication
+                            </label>
+                            <input type="datetime-local" id="publishDate" name="publishDate">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="status">
+                                <i class="fas fa-eye"></i>
+                                Statut
+                            </label>
+                            <select id="status" name="status">
+                                <option value="draft">Brouillon</option>
+                                <option value="published">Publié</option>
+                                <option value="scheduled">Programmé</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="allowComments" name="allowComments" checked>
+                            <span class="checkmark"></span>
+                            Autoriser les commentaires
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Form Actions -->
+                <div class="form-actions">
+                    <button type="button" class="btn-draft" onclick="saveDraft()">
+                        <i class="fas fa-save"></i>
+                        Enregistrer en brouillon
+                    </button>
+                    <button type="button" class="btn-preview" onclick="previewArticle()">
+                        <i class="fas fa-eye"></i>
+                        Aperçu
+                    </button>
+                    <button type="submit" class="btn-submit">
+                        <i class="fas fa-paper-plane"></i>
+                        Publier l'article
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-blog"></i>
+                        <span>BlogInteractif</span>
+                    </div>
+                    <p class="footer-description">
+                        Partagez vos idées, discutez, et interagissez avec une communauté passionnée de développeurs.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 class="footer-title">Navigation</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="about.html">À propos</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="articles.html">Articles</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 class="footer-title">Catégories</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">JavaScript</a></li>
+                        <li><a href="#">Python</a></li>
+                        <li><a href="#">Design</a></li>
+                        <li><a href="#">DevOps</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 class="footer-title">Légal</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Conditions d'utilisation</a></li>
+                        <li><a href="#">Politique de confidentialité</a></li>
+                        <li><a href="#">Mentions légales</a></li>
+                        <li><a href="#">Cookies</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 BlogInteractif. Tous droits réservés.</p>
+                <p>Fait avec <i class="fas fa-heart text-red"></i> par des développeurs passionnés</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Character counters
+        document.getElementById('title').addEventListener('input', function() {
+            document.getElementById('titleCounter').textContent = this.value.length;
+        });
+        
+        document.getElementById('excerpt').addEventListener('input', function() {
+            document.getElementById('excerptCounter').textContent = this.value.length;
+        });
+        
+        document.getElementById('content').addEventListener('input', function() {
+            document.getElementById('contentCounter').textContent = this.value.length;
+        });
+        
+        // Image preview
+        document.getElementById('coverImage').addEventListener('input', function() {
+            const url = this.value;
+            const preview = document.getElementById('imagePreview');
+            const previewImg = document.getElementById('previewImg');
+            
+            if (url) {
+                previewImg.src = url;
+                preview.style.display = 'block';
+            } else {
+                preview.style.display = 'none';
+            }
+        });
+        
+        function removeImage() {
+            document.getElementById('coverImage').value = '';
+            document.getElementById('imagePreview').style.display = 'none';
+        }
+        
+        // Editor functions
+        function formatText(command) {
+            const textarea = document.getElementById('content');
+            const start = textarea.selectionStart;
+            const end = textarea.selectionEnd;
+            const selectedText = textarea.value.substring(start, end);
+            
+            let formattedText = '';
+            switch(command) {
+                case 'bold':
+                    formattedText = `**${selectedText}**`;
+                    break;
+                case 'italic':
+                    formattedText = `*${selectedText}*`;
+                    break;
+                case 'underline':
+                    formattedText = `__${selectedText}__`;
+                    break;
+            }
+            
+            textarea.value = textarea.value.substring(0, start) + formattedText + textarea.value.substring(end);
+            textarea.focus();
+        }
+        
+        function insertHeading() {
+            const textarea = document.getElementById('content');
+            const cursorPos = textarea.selectionStart;
+            textarea.value = textarea.value.substring(0, cursorPos) + '\n## Titre\n\n' + textarea.value.substring(cursorPos);
+            textarea.focus();
+        }
+        
+        function insertLink() {
+            const url = prompt('Entrez l\'URL du lien:');
+            if (url) {
+                const textarea = document.getElementById('content');
+                const cursorPos = textarea.selectionStart;
+                textarea.value = textarea.value.substring(0, cursorPos) + `[Texte du lien](${url})` + textarea.value.substring(cursorPos);
+                textarea.focus();
+            }
+        }
+        
+        function insertList() {
+            const textarea = document.getElementById('content');
+            const cursorPos = textarea.selectionStart;
+            textarea.value = textarea.value.substring(0, cursorPos) + '\n- Élément 1\n- Élément 2\n- Élément 3\n\n' + textarea.value.substring(cursorPos);
+            textarea.focus();
+        }
+        
+        function insertQuote() {
+            const textarea = document.getElementById('content');
+            const cursorPos = textarea.selectionStart;
+            textarea.value = textarea.value.substring(0, cursorPos) + '\n> Citation\n\n' + textarea.value.substring(cursorPos);
+            textarea.focus();
+        }
+        
+        // Form submission
+        function handleArticleSubmit(event) {
+            event.preventDefault();
+            
+            const formData = new FormData(event.target);
+            const articleData = Object.fromEntries(formData);
+            
+            console.log('Article data:', articleData);
+            alert('Article publié avec succès !');
+            
+            // Reset form
+            event.target.reset();
+            document.getElementById('titleCounter').textContent = '0';
+            document.getElementById('excerptCounter').textContent = '0';
+            document.getElementById('contentCounter').textContent = '0';
+            document.getElementById('imagePreview').style.display = 'none';
+        }
+        
+        function saveDraft() {
+            alert('Brouillon enregistré !');
+        }
+        
+        function previewArticle() {
+            alert('Fonctionnalité d\'aperçu bientôt disponible !');
+        }
+    </script>
+</body>
+</html>

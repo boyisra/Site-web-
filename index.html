@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Groupe La Passerelle - Accueil</title>
+    <link rel="icon" href="static/images/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-network-wired"></i>
+                <span>Groupe La Passerelle</span>
+            </a>
+            
+            <div class="nav-links">
+                <a href="index.html" class="nav-link active"><i class="fas fa-home"></i> Accueil</a>
+                <a href="articles.html" class="nav-link"><i class="fas fa-newspaper"></i> Articles</a>
+                <a href="about.html" class="nav-link"><i class="fas fa-info-circle"></i> À propos</a>
+                <a href="contact.html" class="nav-link"><i class="fas fa-envelope"></i> Contact</a>
+                <a href="profile.html" class="nav-link"><i class="fas fa-user"></i> Profil</a>
+                <a href="article_form.html" class="nav-link"><i class="fas fa-edit"></i> Rédiger</a>
+                <a href="search_results.html" class="nav-link"><i class="fas fa-search"></i> Recherche</a>
+                <a href="article_detail.html" class="nav-link"><i class="fas fa-file-alt"></i> Détail</a>
+                <a href="login.html" class="btn btn-outline"><i class="fas fa-sign-in-alt"></i> Connexion</a>
+                <a href="register.html" class="btn btn-primary"><i class="fas fa-user-plus"></i> Inscription</a>
+            </div>
+            
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    Bienvenue sur <span class="gradient-text">Groupe La Passerelle</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Groupe La Passerelle est une entreprise de services du numérique (ESN). Elle souhaite lancer son site internet pour promouvoir ses expertises techniques auprès de clients professionnels.
+                </p>
+                <div class="hero-buttons">
+                    <a href="register.html" class="btn btn-primary btn-large">
+                        <i class="fas fa-user-plus"></i>
+                        Rejoindre la communauté
+                    </a>
+                    <a href="#articles" class="btn btn-outline btn-large">
+                        <i class="fas fa-newspaper"></i>
+                        Découvrir les articles
+                    </a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="floating-card">
+                    <i class="fas fa-code"></i>
+                </div>
+                <div class="floating-card">
+                    <i class="fas fa-laptop-code"></i>
+                </div>
+                <div class="floating-card">
+                    <i class="fas fa-mobile-alt"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-newspaper"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 class="stat-number" data-target="1250">0</h3>
+                        <p class="stat-label">Articles publiés</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 class="stat-number" data-target="28500">0</h3>
+                        <p class="stat-label">Commentaires</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 class="stat-number" data-target="5200">0</h3>
+                        <p class="stat-label">Membres actifs</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 class="stat-number" data-target="52000">0</h3>
+                        <p class="stat-label">Likes échangés</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Articles Section -->
+    <section id="articles" class="articles">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Articles récents</h2>
+                <p class="section-subtitle">Découvrez les dernières publications de notre communauté</p>
+            </div>
+            
+            <!-- Filters -->
+            <div class="filters">
+                <button class="filter-btn active" data-filter="all">
+                    <i class="fas fa-th"></i> Tous
+                </button>
+                <button class="filter-btn" data-filter="popular">
+                    <i class="fas fa-fire"></i> Populaires
+                </button>
+                <button class="filter-btn" data-filter="recent">
+                    <i class="fas fa-clock"></i> Récents
+                </button>
+                <button class="filter-btn" data-filter="trending">
+                    <i class="fas fa-chart-line"></i> Tendances
+                </button>
+            </div>
+            
+            <!-- Articles Grid -->
+            <div class="articles-grid" id="articlesGrid">
+                <!-- Article 1 -->
+                <article class="article-card" data-category="popular">
+                    <div class="article-image">
+                        <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Article 1">
+                        <div class="article-overlay">
+                            <button class="btn-read">
+                                <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <div class="author">
+                                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=50&q=80" alt="Auteur">
+                                <span>Jean Dupont</span>
+                            </div>
+                            <div class="date">
+                                <i class="far fa-calendar"></i>
+                                <span>15 fév 2026</span>
+                            </div>
+                        </div>
+                        <h3 class="article-title">
+                            <a href="article.html">Les meilleures pratiques de développement web en 2026</a>
+                        </h3>
+                        <p class="article-excerpt">
+                            Découvrez les dernières tendances et technologies qui transforment le développement web moderne...
+                        </p>
+                        <div class="article-tags">
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">React</span>
+                            <span class="tag">Web</span>
+                        </div>
+                        <div class="article-stats">
+                            <div class="stat">
+                                <i class="fas fa-heart"></i>
+                                <span>245</span>
+                            </div>
+                            <div class="stat">
+                                <i class="fas fa-comment"></i>
+                                <span>42</span>
+                            </div>
+                            <div class="stat">
+                                <i class="fas fa-eye"></i>
+                                <span>1.2k</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Article 2 -->
+                <article class="article-card" data-category="trending">
+                    <div class="article-image">
+                        <img src="https://images.unsplash.com/photo-1516116216624-53e697fedbea?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Article 2">
+                        <div class="article-overlay">
+                            <button class="btn-read">
+                                <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <div class="author">
+                                <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=50&q=80" alt="Auteur">
+                                <span>Marie Martin</span>
+                            </div>
+                            <div class="date">
+                                <i class="far fa-calendar"></i>
+                                <span>14 fév 2026</span>
+                            </div>
+                        </div>
+                        <h3 class="article-title">
+                            <a href="article.html">Introduction à l'intelligence artificielle pour les développeurs</a>
+                        </h3>
+                        <p class="article-excerpt">
+                            Comment l'IA peut transformer votre façon de coder et améliorer votre productivité au quotidien...
+                        </p>
+                        <div class="article-tags">
+                            <span class="tag">IA</span>
+                            <span class="tag">Python</span>
+                            <span class="tag">Machine Learning</span>
+                        </div>
+                        <div class="article-stats">
+                            <div class="stat">
+                                <i class="fas fa-heart"></i>
+                                <span>189</span>
+                            </div>
+                            <div class="stat">
+                                <i class="fas fa-comment"></i>
+                                <span>28</span>
+                            </div>
+                            <div class="stat">
+                                <i class="fas fa-eye"></i>
+                                <span>890</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Article 3 -->
+                <article class="article-card" data-category="recent">
+                    <div class="article-image">
+                        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Article 3">
+                        <div class="article-overlay">
+                            <button class="btn-read">
+                                <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <div class="author">
+                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=50&q=80" alt="Auteur">
+                                <span>Thomas Bernard</span>
+                            </div>
+                            <div class="date">
+                                <i class="far fa-calendar"></i>
+                                <span>13 fév 2026</span>
+                            </div>
+                        </div>
+                        <h3 class="article-title">
+                            <a href="article.html">Optimisation des performances des applications web</a>
+                        </h3>
+                        <p class="article-excerpt">
+                            Les techniques essentielles pour rendre vos applications plus rapides et plus efficaces...
+                        </p>
+                        <div class="article-tags">
+                            <span class="tag">Performance</span>
+                            <span class="tag">Optimisation</span>
+                            <span class="tag">Frontend</span>
+                        </div>
+                        <div class="article-stats">
+                            <div class="stat">
+                                <i class="fas fa-heart"></i>
+                                <span>156</span>
+                            </div>
+                            <div class="stat">
+                                <i class="fas fa-comment"></i>
+                                <span>35</span>
+                            </div>
+                            <div class="stat">
+                                <i class="fas fa-eye"></i>
+                                <span>756</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Article 4 -->
+                <article class="article-card" data-category="popular">
+                    <div class="article-image">
+                        <img src="https://images.unsplash.com/photo-1627398242455-45a1465c2479?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Article 4">
+                        <div class="article-overlay">
+                            <button class="btn-read">
+                                <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <div class="author">
+                                <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=50&q=80" alt="Auteur">
+                                <span>Sophie Laurent</span>
+                            </div>
+                            <div class="date">
+                                <i class="far fa-calendar"></i>
+                                <span>12 fév 2026</span>
+                            </div>
+                        </div>
+                        <h3 class="article-title">
+                            <a href="article.html">Les tendances du design web en 2026</a>
+                        </h3>
+                        <p class="article-excerpt">
+                            Explorez les dernières tendances en matière de design web et d'expérience utilisateur...
+                        </p>
+                        <div class="article-tags">
+                            <span class="tag">Design</span>
+                            <span class="tag">UX/UI</span>
+                            <span class="tag">Tendances</span>
+                        </div>
+                        <div class="article-stats">
+                            <div class="stat">
+                                <i class="fas fa-heart"></i>
+                                <span>203</span>
+                            </div>
+                            <div class="stat">
+                                <i class="fas fa-comment"></i>
+                                <span>51</span>
+                            </div>
+                            <div class="stat">
+                                <i class="fas fa-eye"></i>
+                                <span>1.5k</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Article 5 -->
+                <article class="article-card" data-category="trending">
+                    <div class="article-image">
+                        <img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Article 5">
+                        <div class="article-overlay">
+                            <button class="btn-read">
+                                <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <div class="author">
+                                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=50&q=80" alt="Auteur">
+                                <span>Alexandre Petit</span>
+                            </div>
+                            <div class="date">
+                                <i class="far fa-calendar"></i>
+                                <span>11 fév 2026</span>
+                            </div>
+                        </div>
+                        <h3 class="article-title">
+                            <a href="article.html">Docker et Kubernetes : Guide complet</a>
+                        </h3>
+                        <p class="article-excerpt">
+                            Maîtrisez la conteneurisation et l'orchestration pour vos applications modernes...
+                        </p>
+                        <div class="article-tags">
+                            <span class="tag">Docker</span>
+                            <span class="tag">Kubernetes</span>
+                            <span class="tag">DevOps</span>
+                        </div>
+                        <div class="article-stats">
+                            <div class="stat">
+                                <i class="fas fa-heart"></i>
+                                <span>178</span>
+                            </div>
+                            <div class="stat">
+                                <i class="fas fa-comment"></i>
+                                <span>29</span>
+                            </div>
+                            <div class="stat">
+                                <i class="fas fa-eye"></i>
+                                <span>923</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Article 6 -->
+                <article class="article-card" data-category="recent">
+                    <div class="article-image">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Article 6">
+                        <div class="article-overlay">
+                            <button class="btn-read">
+                                <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <div class="author">
+                                <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=50&q=80" alt="Auteur">
+                                <span>Isabelle Dubois</span>
+                            </div>
+                            <div class="date">
+                                <i class="far fa-calendar"></i>
+                                <span>10 fév 2026</span>
+                            </div>
+                        </div>
+                        <h3 class="article-title">
+                            <a href="article.html">Sécurité web : Meilleures pratiques 2026</a>
+                        </h3>
+                        <p class="article-excerpt">
+                            Protégez vos applications contre les menaces les plus courantes du web moderne...
+                        </p>
+                        <div class="article-tags">
+                            <span class="tag">Sécurité</span>
+                            <span class="tag">Cybersécurité</span>
+                            <span class="tag">Best Practices</span>
+                        </div>
+                        <div class="article-stats">
+                            <div class="stat">
+                                <i class="fas fa-heart"></i>
+                                <span>167</span>
+                            </div>
+                            <div class="stat">
+                                <i class="fas fa-comment"></i>
+                                <span>44</span>
+                            </div>
+                            <div class="stat">
+                                <i class="fas fa-eye"></i>
+                                <span>1.1k</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <!-- Load More Button -->
+            <div class="load-more">
+                <button class="btn btn-outline btn-large" id="loadMoreBtn">
+                    <i class="fas fa-plus"></i>
+                    Charger plus d'articles
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title">Rejoignez notre communauté</h2>
+                <p class="cta-subtitle">
+                    Inscrivez-vous gratuitement pour publier des articles, commenter et interagir avec les autres membres.
+                </p>
+                <div class="cta-buttons">
+                    <a href="register.html" class="btn btn-primary btn-large">
+                        <i class="fas fa-user-plus"></i>
+                        S'inscrire maintenant
+                    </a>
+                    <a href="login.html" class="btn btn-outline btn-large">
+                        <i class="fas fa-sign-in-alt"></i>
+                        Se connecter
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-blog"></i>
+                        <span>BlogInteractif</span>
+                    </div>
+                    <p class="footer-description">
+                        Partagez vos idées, discutez, et interagissez avec une communauté passionnée de développeurs.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 class="footer-title">Navigation</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="about.html">À propos</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="articles.html">Articles</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 class="footer-title">Catégories</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">JavaScript</a></li>
+                        <li><a href="#">Python</a></li>
+                        <li><a href="#">Design</a></li>
+                        <li><a href="#">DevOps</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 class="footer-title">Légal</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Conditions d'utilisation</a></li>
+                        <li><a href="#">Politique de confidentialité</a></li>
+                        <li><a href="#">Mentions légales</a></li>
+                        <li><a href="#">Cookies</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 BlogInteractif. Tous droits réservés.</p>
+            </div>
+            
+            <div class="footer-section">
+                <h4 class="footer-title">Catégories</h4>
+                <ul class="footer-links">
+                    <li><a href="#">JavaScript</a></li>
+                    <li><a href="#">Python</a></li>
+                    <li><a href="#">Design</a></li>
+                    <li><a href="#">DevOps</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h4 class="footer-title">Légal</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Conditions d'utilisation</a></li>
+                    <li><a href="#">Politique de confidentialité</a></li>
+                    <li><a href="#">Mentions légales</a></li>
+                    <li><a href="#">Cookies</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2026 BlogInteractif. Tous droits réservés.</p>
+            <p>Fait avec <i class="fas fa-heart text-red"></i> par des développeurs passionnés</p>
+        </div>
+    </div>
+</footer>
+
+<!-- Scripts -->
+<script src="script.js"></script>
+<script>
+    // Fonctionnalité des filtres d'articles
+    document.addEventListener('DOMContentLoaded', function() {
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const articles = document.querySelectorAll('.article-card');
+        
+        filterButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // Retirer la classe active de tous les boutons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                // Ajouter la classe active au bouton cliqué
+                this.classList.add('active');
+                
+                const filter = this.getAttribute('data-filter');
+                
+                // Filtrer les articles
+                articles.forEach(article => {
+                    if (filter === 'all') {
+                        article.style.display = 'block';
+                    } else {
+                        const category = article.getAttribute('data-category');
+                        if (category === filter) {
+                            article.style.display = 'block';
+                        } else {
+                            article.style.display = 'none';
+                        }
+                    }
+                });
+            });
+        });
+        
+        // Animation des compteurs de statistiques
+        const statNumbers = document.querySelectorAll('.stat-number');
+        
+        const animateCounter = (element) => {
+            const target = parseInt(element.getAttribute('data-target'));
+            const duration = 2000;
+            const step = target / (duration / 16);
+            let current = 0;
+            
+            const updateCounter = () => {
+                current += step;
+                if (current < target) {
+                    element.textContent = Math.floor(current);
+                    requestAnimationFrame(updateCounter);
+                } else {
+                    element.textContent = target;
+                }
+            };
+            
+            updateCounter();
+        };
+        
+        // Observer pour déclencher l'animation quand visible
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounter(entry.target);
+                    observer.unobserve(entry.target);
+                }
+            });
+        });
+        
+        statNumbers.forEach(stat => observer.observe(stat));
+    });
+</script>
+</body>
+</html>

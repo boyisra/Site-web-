@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Groupe La Passerelle - Actualités</title>
+    <link rel="shortcut icon" href="logo1.jpg"/>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="icon.ico">
+    <style>
+        .actualites-hero {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, rgba(124, 58, 237, 0.1) 100%);
+        }
+        
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+        
+        .article-card {
+            background: rgba(15, 15, 15, 0.95);
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .article-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary-color);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .article-image {
+            position: relative;
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .article-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .article-card:hover .article-image img {
+            transform: scale(1.1);
+        }
+        
+        .article-content {
+            padding: 2rem;
+        }
+        
+        .article-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            color: #cbd5e0;
+            font-size: 0.9rem;
+        }
+        
+        .article-category {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            font-size: 0.8rem;
+        }
+        
+        .article-date {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .article-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+            transition: var(--transition);
+        }
+        
+        .article-card:hover .article-title {
+            color: var(--primary-color);
+        }
+        
+        .article-excerpt {
+            color: #cbd5e0;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+        }
+        
+        .article-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .tag {
+            background: rgba(139, 92, 246, 0.2);
+            color: #90cdf4;
+            padding: 0.25rem 0.75rem;
+            border-radius: var(--radius-sm);
+            font-size: 0.8rem;
+            font-weight: 500;
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            transition: var(--transition);
+        }
+        
+        .tag:hover {
+            background: rgba(139, 92, 246, 0.3);
+            color: #ffffff;
+        }
+        
+        .article-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-color);
+        }
+        
+        .read-more {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: var(--transition);
+        }
+        
+        .read-more:hover {
+            color: var(--secondary-color);
+            transform: translateX(5px);
+        }
+        
+        @media (max-width: 768px) {
+            .articles-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .article-content {
+                padding: 1.5rem;
+            }
+            
+            .article-title {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-network-wired"></i>
+                <span>Groupe La Passerelle</span>
+            </a>
+            
+            <div class="nav-links">
+                <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Accueil</a>
+                <a href="about.html" class="nav-link"><i class="fas fa-info-circle"></i> À propos</a>
+                <a href="expertises.html" class="nav-link"><i class="fas fa-microchip"></i> Expertises</a>
+                <a href="actualites.html" class="nav-link active"><i class="fas fa-newspaper"></i> Actualités</a>
+                <a href="recrutement.html" class="nav-link"><i class="fas fa-briefcase"></i> Recrutement</a>
+                <a href="contact.html" class="nav-link"><i class="fas fa-envelope"></i> Contact</a>
+                <a href="login.html" class="btn btn-outline"><i class="fas fa-sign-in-alt"></i> Connexion</a>
+            </div>
+            
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Actualités Hero Section -->
+    <section class="actualites-hero">
+        <div class="container">
+            <div class="section-header">
+                <h1 class="section-title">Actualités technologiques</h1>
+                <p class="section-subtitle">Découvrez les dernières tendances et innovations du numérique</p>
+            </div>
+            
+            <div class="articles-grid">
+                <!-- Article 1 -->
+                <article class="article-card">
+                    <div class="article-image">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="IA et Cloud">
+                    </div>
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <span class="article-category">Intelligence Artificielle</span>
+                            <div class="article-date">
+                                <i class="far fa-calendar"></i>
+                                <span>15 Mars 2026</span>
+                            </div>
+                        </div>
+                        <h3 class="article-title">L'IA révolutionne le cloud computing en 2026</h3>
+                        <p class="article-excerpt">
+                            Les nouvelles architectures d'intelligence artificielle transforment radicalement les infrastructures cloud, 
+                            offrant des performances inégalées et une optimisation automatique des ressources.
+                        </p>
+                        <div class="article-tags">
+                            <span class="tag">IA</span>
+                            <span class="tag">Cloud</span>
+                            <span class="tag">Innovation</span>
+                        </div>
+                        <div class="article-footer">
+                            <a href="#" class="read-more">
+                                Lire la suite
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Article 2 -->
+                <article class="article-card">
+                    <div class="article-image">
+                        <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Cybersécurité">
+                    </div>
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <span class="article-category">Cybersécurité</span>
+                            <div class="article-date">
+                                <i class="far fa-calendar"></i>
+                                <span>14 Mars 2026</span>
+                            </div>
+                        </div>
+                        <h3 class="article-title">Nouvelles menaces cybersécurité : comment s'en protéger</h3>
+                        <p class="article-excerpt">
+                            Les experts de Groupe La Passerelle analysent les dernières cybermenaces et proposent 
+                            des stratégies de protection adaptées aux entreprises modernes.
+                        </p>
+                        <div class="article-tags">
+                            <span class="tag">Sécurité</span>
+                            <span class="tag">Protection</span>
+                            <span class="tag">Bonnes pratiques</span>
+                        </div>
+                        <div class="article-footer">
+                            <a href="#" class="read-more">
+                                Lire la suite
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Article 3 -->
+                <article class="article-card">
+                    <div class="article-image">
+                        <img src="https://images.unsplash.com/photo-1460925895917-0abf1f451e63?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="DevOps">
+                    </div>
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <span class="article-category">DevOps</span>
+                            <div class="article-date">
+                                <i class="far fa-calendar"></i>
+                                <span>13 Mars 2026</span>
+                            </div>
+                        </div>
+                        <h3 class="article-title">Kubernetes : l'orchestration de conteneurs démocratisée</h3>
+                        <p class="article-excerpt">
+                            Découvrez comment Kubernetes simplifie la gestion des applications conteneurisées 
+                            et devient indispensable pour les infrastructures modernes.
+                        </p>
+                        <div class="article-tags">
+                            <span class="tag">Kubernetes</span>
+                            <span class="tag">DevOps</span>
+                            <span class="tag">Conteneurs</span>
+                        </div>
+                        <div class="article-footer">
+                            <a href="#" class="read-more">
+                                Lire la suite
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Article 4 -->
+                <article class="article-card">
+                    <div class="article-image">
+                        <img src="https://images.unsplash.com/photo-1517048676732-dc14dd219e69?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Data Science">
+                    </div>
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <span class="article-category">Data Science</span>
+                            <div class="article-date">
+                                <i class="far fa-calendar"></i>
+                                <span>12 Mars 2026</span>
+                            </div>
+                        </div>
+                        <h3 class="article-title">Big Data : transformer les données en décisions stratégiques</h3>
+                        <p class="article-excerpt">
+                            Les entreprises qui maîtrisent l'analyse de leurs données massives gagnent un avantage 
+                            concurrentiel décisif dans leur secteur.
+                        </p>
+                        <div class="article-tags">
+                            <span class="tag">Big Data</span>
+                            <span class="tag">Analytics</span>
+                            <span class="tag">Business Intelligence</span>
+                        </div>
+                        <div class="article-footer">
+                            <a href="#" class="read-more">
+                                Lire la suite
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Article 5 -->
+                <article class="article-card">
+                    <div class="article-image">
+                        <img src="https://images.unsplash.com/photo-1555949965-279407e4055c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Réseaux">
+                    </div>
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <span class="article-category">Réseaux</span>
+                            <div class="article-date">
+                                <i class="far fa-calendar"></i>
+                                <span>11 Mars 2026</span>
+                            </div>
+                        </div>
+                        <h3 class="article-title">WiFi 6E : la nouvelle révolution du sans-fil</h3>
+                        <p class="article-excerpt">
+                            La nouvelle norme WiFi 6E promet des débits multipliés par 4 et une latence 
+                            considérablement réduite pour les applications critiques.
+                        </p>
+                        <div class="article-tags">
+                            <span class="tag">WiFi</span>
+                            <span class="tag">Réseaux</span>
+                            <span class="tag">Innovation</span>
+                        </div>
+                        <div class="article-footer">
+                            <a href="#" class="read-more">
+                                Lire la suite
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Article 6 -->
+                <article class="article-card">
+                    <div class="article-image">
+                        <img src="https://images.unsplash.com/photo-1517248135461-0282a976d23f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Blockchain">
+                    </div>
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <span class="article-category">Blockchain</span>
+                            <div class="article-date">
+                                <i class="far fa-calendar"></i>
+                                <span>10 Mars 2026</span>
+                            </div>
+                        </div>
+                        <h3 class="article-title">Blockchain : au-delà des cryptomonnaies</h3>
+                        <p class="article-excerpt">
+                            Découvrez comment la technologie blockchain révolutionne la traçabilité, 
+                            la sécurité et les processus métier dans tous les secteurs.
+                        </p>
+                        <div class="article-tags">
+                            <span class="tag">Blockchain</span>
+                            <span class="tag">Web3</span>
+                            <span class="tag">Innovation</span>
+                        </div>
+                        <div class="article-footer">
+                            <a href="#" class="read-more">
+                                Lire la suite
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-network-wired"></i>
+                        <span>Groupe La Passerelle</span>
+                    </div>
+                    <p class="footer-description">
+                        Groupe La Passerelle est une entreprise de services du numérique (ESN). Elle souhaite lancer son site internet pour promouvoir ses expertises techniques auprès de clients professionnels.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 class="footer-title">Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="expertises.html">Développement Web</a></li>
+                        <li><a href="expertises.html">Applications Mobiles</a></li>
+                        <li><a href="expertises.html">Cloud & DevOps</a></li>
+                        <li><a href="expertises.html">Intelligence Artificielle</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 class="footer-title">Expertises</h4>
+                    <ul class="footer-links">
+                        <li><a href="expertises.html">Réseaux</a></li>
+                        <li><a href="expertises.html">Analyse de données</a></li>
+                        <li><a href="expertises.html">Programmation</a></li>
+                        <li><a href="expertises.html">Bases de données</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 class="footer-title">Légal</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Conditions d'utilisation</a></li>
+                        <li><a href="#">Politique de confidentialité</a></li>
+                        <li><a href="#">Mentions légales</a></li>
+                        <li><a href="#">Cookies</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 Groupe La Passerelle. Tous droits réservés.</p>
+                <p>ESN - Entreprise de Services du Numérique</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="base.js"></script>
+</body>
+</html>

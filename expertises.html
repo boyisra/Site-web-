@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Groupe La Passerelle - Expertises</title>
+    <link rel="shortcut icon" href="logo1.jpg"/>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="icon.ico">
+    <style>
+        .expertise-hero {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, rgba(124, 58, 237, 0.1) 100%);
+        }
+        
+        .expertise-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+        
+        .expertise-card {
+            background: rgba(15, 15, 15, 0.95);
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 3rem;
+            text-align: center;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .expertise-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .expertise-card:hover::before {
+            left: 100%;
+        }
+        
+        .expertise-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: var(--primary-color);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .expertise-icon {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            color: white;
+            font-size: 3rem;
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .expertise-card:hover .expertise-icon {
+            transform: rotate(360deg) scale(1.1);
+            box-shadow: 0 8px 25px rgba(139, 92, 246, 0.4);
+        }
+        
+        .expertise-title {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 1.5rem;
+            transition: var(--transition);
+        }
+        
+        .expertise-card:hover .expertise-title {
+            color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+        
+        .expertise-description {
+            color: #cbd5e0;
+            line-height: 1.8;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            transition: var(--transition);
+        }
+        
+        .expertise-card:hover .expertise-description {
+            transform: translateY(-1px);
+        }
+        
+        .expertise-features {
+            list-style: none;
+            padding: 0;
+            text-align: left;
+        }
+        
+        .expertise-features li {
+            color: #e2e8f0;
+            padding: 0.5rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .expertise-features i {
+            color: var(--primary-color);
+            font-size: 0.8rem;
+        }
+        
+        @media (max-width: 768px) {
+            .expertise-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .expertise-card {
+                padding: 2rem;
+            }
+            
+            .expertise-icon {
+                width: 100px;
+                height: 100px;
+                font-size: 2.5rem;
+            }
+            
+            .expertise-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-network-wired"></i>
+                <span>Groupe La Passerelle</span>
+            </a>
+            
+            <div class="nav-links">
+                <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Accueil</a>
+                <a href="about.html" class="nav-link"><i class="fas fa-info-circle"></i> À propos</a>
+                <a href="expertises.html" class="nav-link active"><i class="fas fa-microchip"></i> Expertises</a>
+                <a href="actualites.html" class="nav-link"><i class="fas fa-newspaper"></i> Actualités</a>
+                <a href="recrutement.html" class="nav-link"><i class="fas fa-briefcase"></i> Recrutement</a>
+                <a href="contact.html" class="nav-link"><i class="fas fa-envelope"></i> Contact</a>
+                <a href="login.html" class="btn btn-outline"><i class="fas fa-sign-in-alt"></i> Connexion</a>
+            </div>
+            
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Expertise Hero Section -->
+    <section class="expertise-hero">
+        <div class="container">
+            <div class="section-header">
+                <h1 class="section-title">Nos expertises techniques</h1>
+                <p class="section-subtitle">Des solutions complètes pour tous vos besoins technologiques</p>
+            </div>
+            
+            <div class="expertise-grid">
+                <!-- Réseaux -->
+                <div class="expertise-card">
+                    <div class="expertise-icon">
+                        <i class="fas fa-network-wired"></i>
+                    </div>
+                    <h2 class="expertise-title">Réseaux</h2>
+                    <p class="expertise-description">
+                        Installation, configuration et maintenance d'infrastructures réseaux performantes et sécurisées 
+                        pour garantir la continuité de vos activités.
+                    </p>
+                    <ul class="expertise-features">
+                        <li><i class="fas fa-check"></i> Installation réseau</li>
+                        <li><i class="fas fa-check"></i> Configuration switch/routeur</li>
+                        <li><i class="fas fa-check"></i> Maintenance préventive</li>
+                        <li><i class="fas fa-check"></i> Sécurité réseau</li>
+                        <li><i class="fas fa-check"></i> Optimisation performance</li>
+                    </ul>
+                </div>
+
+                <!-- Analyse de données -->
+                <div class="expertise-card">
+                    <div class="expertise-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h2 class="expertise-title">Analyse de données</h2>
+                    <p class="expertise-description">
+                        Transformation de vos données brutes en informations stratégiques grâce à nos solutions 
+                        de Big Data et Business Intelligence.
+                    </p>
+                    <ul class="expertise-features">
+                        <li><i class="fas fa-check"></i> Statistiques avancées</li>
+                        <li><i class="fas fa-check"></i> Big Data Processing</li>
+                        <li><i class="fas fa-check"></i> Business Intelligence</li>
+                        <li><i class="fas fa-check"></i> Data Visualization</li>
+                        <li><i class="fas fa-check"></i> Machine Learning</li>
+                    </ul>
+                </div>
+
+                <!-- Programmation -->
+                <div class="expertise-card">
+                    <div class="expertise-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h2 class="expertise-title">Programmation</h2>
+                    <p class="expertise-description">
+                        Développement sur mesure d'applications web et mobiles avec les technologies 
+                        les plus modernes et les meilleures pratiques.
+                    </p>
+                    <ul class="expertise-features">
+                        <li><i class="fas fa-check"></i> Développement web</li>
+                        <li><i class="fas fa-check"></i> Applications mobiles</li>
+                        <li><i class="fas fa-check"></i> API REST/GraphQL</li>
+                        <li><i class="fas fa-check"></i> Microservices</li>
+                        <li><i class="fas fa-check"></i> DevOps & CI/CD</li>
+                    </ul>
+                </div>
+
+                <!-- Bases de données -->
+                <div class="expertise-card">
+                    <div class="expertise-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h2 class="expertise-title">Bases de données</h2>
+                    <p class="expertise-description">
+                        Modélisation, administration et optimisation de bases de données SQL et NoSQL 
+                        pour des performances et une scalabilité optimales.
+                    </p>
+                    <ul class="expertise-features">
+                        <li><i class="fas fa-check"></i> Modélisation UML</li>
+                        <li><i class="fas fa-check"></i> Administration SQL</li>
+                        <li><i class="fas fa-check"></i> Bases NoSQL</li>
+                        <li><i class="fas fa-check"></i> Migration données</li>
+                        <li><i class="fas fa-check"></i> Performance tuning</li>
+                    </ul>
+                </div>
+
+                <!-- Sécurité -->
+                <div class="expertise-card">
+                    <div class="expertise-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h2 class="expertise-title">Sécurité de l'information</h2>
+                    <p class="expertise-description">
+                        Audit, cybersécurité et protection complète de vos systèmes d'information 
+                        contre les menaces numériques actuelles.
+                    </p>
+                    <ul class="expertise-features">
+                        <li><i class="fas fa-check"></i> Audit de sécurité</li>
+                        <li><i class="fas fa-check"></i> Cybersécurité</li>
+                        <li><i class="fas fa-check"></i> Protection des données</li>
+                        <li><i class="fas fa-check"></i> Conformité RGPD</li>
+                        <li><i class="fas fa-check"></i> Formation équipes</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-network-wired"></i>
+                        <span>Groupe La Passerelle</span>
+                    </div>
+                    <p class="footer-description">
+                        Groupe La Passerelle est une entreprise de services du numérique (ESN). Elle souhaite lancer son site internet pour promouvoir ses expertises techniques auprès de clients professionnels.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 class="footer-title">Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="expertises.html">Développement Web</a></li>
+                        <li><a href="expertises.html">Applications Mobiles</a></li>
+                        <li><a href="expertises.html">Cloud & DevOps</a></li>
+                        <li><a href="expertises.html">Intelligence Artificielle</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 class="footer-title">Expertises</h4>
+                    <ul class="footer-links">
+                        <li><a href="expertises.html">Réseaux</a></li>
+                        <li><a href="expertises.html">Analyse de données</a></li>
+                        <li><a href="expertises.html">Programmation</a></li>
+                        <li><a href="expertises.html">Bases de données</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 class="footer-title">Légal</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Conditions d'utilisation</a></li>
+                        <li><a href="#">Politique de confidentialité</a></li>
+                        <li><a href="#">Mentions légales</a></li>
+                        <li><a href="#">Cookies</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 Groupe La Passerelle. Tous droits réservés.</p>
+                <p>ESN - Entreprise de Services du Numérique</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="base.js"></script>
+</body>
+</html>

@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion - Groupe La Passerelle</title>
+    <link rel="shortcut icon" href="logo1.jpg"/>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="icon.ico">
+    <style>
+        .login-hero {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+        }
+        
+        .login-container {
+            max-width: 600px;
+            margin: 4rem auto;
+            padding: 4rem;
+            background: white;
+            border-radius: var(--radius-xl);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border: 3px solid #000000;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .login-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.05), transparent);
+            transition: left 0.8s ease;
+        }
+        
+        .login-container:hover::before {
+            left: 100%;
+        }
+        
+        .login-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .login-header h1 {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            color: #000000;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            transition: var(--transition);
+        }
+        
+        .login-header:hover h1 {
+            transform: scale(1.05);
+        }
+        
+        .login-header p {
+            color: #000000;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+        
+        .form-group {
+            margin-bottom: 2rem;
+            position: relative;
+        }
+        
+        .form-group label {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-weight: 700;
+            color: #000000;
+            margin-bottom: 0.75rem;
+            font-size: 1.1rem;
+        }
+        
+        .form-group label i {
+            color: var(--primary-color);
+            width: 24px;
+            text-align: center;
+            font-size: 1.2rem;
+        }
+        
+        .form-control {
+            padding: 1.25rem;
+            border: 2px solid #000000;
+            border-radius: var(--radius-md);
+            font-size: 1.1rem;
+            transition: var(--transition);
+            font-family: inherit;
+            background: white;
+            width: 100%;
+            font-weight: 500;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+            transform: translateY(-2px);
+        }
+        
+        .password-toggle {
+            position: absolute;
+            right: 1rem;
+            top: 3.5rem;
+            background: none;
+            border: none;
+            color: var(--primary-color);
+            cursor: pointer;
+            font-size: 1.2rem;
+            padding: 0.5rem;
+            border-radius: var(--radius-sm);
+            transition: var(--transition);
+        }
+        
+        .password-toggle:hover {
+            background: rgba(102, 126, 234, 0.1);
+            transform: scale(1.1);
+        }
+        
+        .form-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2.5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .checkbox-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .checkbox-wrapper input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            margin-right: 0.5rem;
+            cursor: pointer;
+        }
+        
+        .checkbox-wrapper label {
+            font-weight: 600;
+            color: #000000;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        
+        .forgot-password {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .forgot-password::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+        
+        .forgot-password:hover::after {
+            width: 100%;
+        }
+        
+        .forgot-password:hover {
+            color: var(--secondary-color);
+            transform: translateY(-1px);
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            padding: 1.25rem 2rem;
+            border: none;
+            border-radius: var(--radius-md);
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-decoration: none;
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            margin-bottom: 1.5rem;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+        }
+        
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.6s;
+        }
+        
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 12px 35px rgba(102, 126, 234, 0.4);
+        }
+        
+        .divider {
+            text-align: center;
+            margin: 2.5rem 0;
+            position: relative;
+        }
+        
+        .divider::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: #000000;
+        }
+        
+        .divider span {
+            background: white;
+            padding: 0 1.5rem;
+            color: #000000;
+            font-weight: 600;
+            font-size: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .social-login {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .social-btn {
+            flex: 1;
+            padding: 1rem;
+            border: 2px solid #000000;
+            border-radius: var(--radius-md);
+            background: white;
+            color: #000000;
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            transition: var(--transition);
+            font-size: 1rem;
+        }
+        
+        .social-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .social-btn.google:hover {
+            background: #ea4335;
+            color: white;
+            border-color: #ea4335;
+        }
+        
+        .social-btn.github:hover {
+            background: #333;
+            color: white;
+            border-color: #333;
+        }
+        
+        .register-prompt {
+            text-align: center;
+            color: #000000;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+        
+        .register-prompt a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 700;
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .register-prompt a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+        
+        .register-prompt a:hover::after {
+            width: 100%;
+        }
+        
+        .register-prompt a:hover {
+            color: var(--secondary-color);
+            transform: translateY(-1px);
+        }
+        
+        .login-info {
+            margin-top: 2rem;
+            text-align: center;
+        }
+        
+        .login-info p {
+            color: #000000;
+            margin-bottom: 1rem;
+        }
+        
+        .login-info a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .login-info a:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            .login-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .social-login {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-network-wired"></i>
+                <span>Groupe La Passerelle</span>
+            </a>
+            
+            <div class="nav-links">
+                <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Accueil</a>
+                <a href="about.html" class="nav-link"><i class="fas fa-info-circle"></i> À propos</a>
+                <a href="contact.html" class="nav-link"><i class="fas fa-envelope"></i> Contact</a>
+                <a href="articles.html" class="nav-link"><i class="fas fa-newspaper"></i> Articles</a>
+                <a href="profile.html" class="nav-link"><i class="fas fa-user"></i> Profil</a>
+                <a href="article_form.html" class="nav-link"><i class="fas fa-edit"></i> Rédiger</a>
+                <a href="search_results.html" class="nav-link"><i class="fas fa-search"></i> Recherche</a>
+                <a href="article_detail.html" class="nav-link"><i class="fas fa-file-alt"></i> Détail</a>
+                
+                <a href="login.html" class="btn btn-outline"><i class="fas fa-sign-in-alt"></i> Connexion</a>
+                <a href="register.html" class="btn btn-primary"><i class="fas fa-user-plus"></i> Inscription</a>
+            </div>
+            
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Login Hero Section -->
+    <section class="login-hero">
+        <div class="login-container">
+            <div class="login-form-container">
+                <div class="login-header">
+                    <h1>Bon retour !</h1>
+                    <p>Connectez-vous pour accéder à votre espace personnel</p>
+                </div>
+                
+                <form class="login-form" id="loginForm">
+                    <div class="form-group">
+                        <label for="email">
+                            <i class="fas fa-envelope"></i>
+                            Adresse email
+                        </label>
+                        <input 
+                            type="email" 
+                            id="email" 
+                            name="email"
+                            class="form-control" 
+                            placeholder="votre@email.com"
+                            required
+                        >
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password">
+                            <i class="fas fa-lock"></i>
+                            Mot de passe
+                        </label>
+                        <div class="password-input">
+                            <input 
+                                type="password" 
+                                id="password" 
+                                name="password"
+                                class="form-control" 
+                                placeholder="Votre mot de passe"
+                                required
+                            >
+                            <button type="button" class="password-toggle" id="passwordToggle">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="checkbox-wrapper">
+                        <input type="checkbox" id="remember" name="remember">
+                        <label for="remember">
+                            Se souvenir de moi
+                        </label>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary btn-large">
+                        <i class="fas fa-sign-in-alt"></i>
+                        Se connecter
+                    </button>
+                    
+                    <div class="form-divider">
+                        <span>ou</span>
+                    </div>
+                    
+                    <div class="social-login">
+                        <button type="button" class="btn-social btn-google">
+                            <i class="fab fa-google"></i>
+                            Se connecter avec Google
+                        </button>
+                        <button type="button" class="btn-social btn-github">
+                            <i class="fab fa-github"></i>
+                            Se connecter avec GitHub
+                        </button>
+                    </div>
+                </form>
+                
+                <div class="login-info">
+                    <p>Pas encore de compte ? <a href="register.html">Créez un compte gratuitement</a></p>
+                    <p><a href="#">Mot de passe oublié ?</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-blog"></i>
+                        <span>BlogInteractif</span>
+                    </div>
+                    <p class="footer-description">
+                        Partagez vos idées, discutez, et interagissez avec une communauté passionnée de développeurs.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 class="footer-title">Navigation</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="about.html">À propos</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="articles.html">Articles</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 class="footer-title">Catégories</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">JavaScript</a></li>
+                        <li><a href="#">Python</a></li>
+                        <li><a href="#">Design</a></li>
+                        <li><a href="#">DevOps</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 class="footer-title">Légal</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Conditions d'utilisation</a></li>
+                        <li><a href="#">Politique de confidentialité</a></li>
+                        <li><a href="#">Mentions légales</a></li>
+                        <li><a href="#">Cookies</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 BlogInteractif. Tous droits réservés.</p>
+                <p>Fait avec <i class="fas fa-heart text-red"></i> par des développeurs passionnés</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Password toggle
+        document.getElementById('passwordToggle').addEventListener('click', function() {
+            const passwordInput = document.getElementById('password');
+            const icon = this.querySelector('i');
+            
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            } else {
+                passwordInput.type = 'password';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            }
+        });
+        
+        // Login form submission
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Simulate login
+            const button = this.querySelector('.btn-primary');
+            const originalText = button.innerHTML;
+            button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Connexion en cours...';
+            button.disabled = true;
+            
+            setTimeout(() => {
+                button.innerHTML = '<i class="fas fa-check"></i> Connexion réussie !';
+                button.style.background = 'linear-gradient(135deg, #48bb78, #38a169)';
+                
+                setTimeout(() => {
+                    alert('Bienvenue sur BlogInteractif !');
+                    this.reset();
+                    button.innerHTML = originalText;
+                    button.disabled = false;
+                    button.style.background = '';
+                }, 2000);
+            }, 2000);
+        });
+        
+        // Social login buttons
+        document.querySelectorAll('.btn-social').forEach(button => {
+            button.addEventListener('click', function() {
+                const provider = this.textContent.includes('Google') ? 'Google' : 'GitHub';
+                alert(`Connexion avec ${provider} bientôt disponible !`);
+            });
+        });
+    </script>
+</body>
+</html>
